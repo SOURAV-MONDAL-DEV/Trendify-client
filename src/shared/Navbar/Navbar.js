@@ -32,16 +32,16 @@ export default function NavBar() {
                 <div className="">
                     {
                         user?.uid ?
-                            <>
-                                <img src={user?.photoURL} className='w-1/12 rounded-full md:mx-3' alt='person'></img>
-                                <span className='mx-1 hidden md:block text-green-500 font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>
+                            <div className="flex items-center">
+                                <img src={user?.photoURL} className='w-8 rounded-full md:mx-3' alt='person'></img>
+                                <span className='mx-1 hidden lg:block text-white font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>
                                 <button onClick={logOut} className=" hidden md:block btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
-                            </>
+                            </div>
                             :
                             <div className="flex items-center">
                                 {/* pleceholder image bosbe,,, mobile a dakhabe */}
                                 <BsPersonPlusFill className="text-4xl md:hidden"></BsPersonPlusFill>
-                                <BsPersonFill  className="text-4xl hidden md:block"></BsPersonFill>
+                                <BsPersonFill className="text-4xl hidden md:block"></BsPersonFill>
                                 <Link to='/login'><button className=" hidden md:block btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3">Login</button></Link>
                             </div>
                     }
