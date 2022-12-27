@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import HomeMid from '../HomeMid/HomeMid';
 import Menu from '../Menu/Menu';
 
@@ -9,7 +10,7 @@ const Home = () => {
                 <Menu></Menu>
             </div>
             <div>
-                <HomeMid></HomeMid>
+                <Outlet></Outlet>
             </div>
             <div className='hidden lg:block'>
                 <p>right side</p>
