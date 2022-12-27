@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../img/Fire-Logo.png"
+import { FaHome } from 'react-icons/fa';
+import { MdPermMedia } from 'react-icons/md';
+import { MdMessage } from 'react-icons/md';
 
 export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
@@ -15,13 +18,13 @@ export default function NavBar() {
                     </div>
                 </div>
                 <div className="flex gap-4 lg:gap-8">
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/media">Media</NavLink>
-                    <NavLink to="/message">Message</NavLink>
+                    <NavLink to="/"><FaHome  className="text-4xl"> </FaHome></NavLink>
+                    <NavLink to="/media"><MdPermMedia className="text-4xl"></MdPermMedia></NavLink>
+                    <NavLink to="/message"><MdMessage className="text-4xl"></MdMessage></NavLink>
                     <NavLink to="/menu" className='lg:hidden' >...</NavLink>
 
                 </div>
-                <div className="hidden md:block">
+                <div className="">
                     <p></p>
                 </div>
             </div>
