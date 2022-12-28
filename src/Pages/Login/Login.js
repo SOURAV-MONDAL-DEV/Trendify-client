@@ -1,13 +1,17 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
-import { Link,  useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link,  useLocation,  useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const navigate = useNavigate()
-
     const {providerLogin, signIn} = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || '/'
+
+    const [error, setError] = useState('');
 
     const handleLogin = event =>{
         event.preventDefault();
@@ -15,24 +19,49 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+
+        setError('')
         signIn(email, password)
         .then(result =>{
             const user = result.user;
             console.log(user);
             form.reset();
+            navigate(from, { replace: true })
         })
         .catch(err => console.log(err));
     }
 
 
+    
+
     const googleProvider = new GoogleAuthProvider()
-    const handleGoogleSignIn = () =>{
+    const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
-        .then(result => {
-            // const user =result.user;
-            navigate('/')
-        })
-        .catch(err => console.log(err))
+            .then(result => {
+
+                const socialLoginUser = {
+                    name: result?.user?.displayName,
+                    email: result?.user?.email,
+                }
+
+                fetch(`http://localhost:5000/users/${result?.user?.email}`, {
+                            method: 'PUT',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(socialLoginUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                navigate('/')
+                                
+                            })
+                            .catch(er => console.error(er));
+            })
+            .catch(err => console.log(err))
+
+
+
     }
 
     return (

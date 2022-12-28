@@ -6,7 +6,7 @@ const HomeMid = () => {
 
     const { user } = useContext(AuthContext)
 
-    // console.log(user.email, "ok");
+    // console.log(user, "ok");
 
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
@@ -28,8 +28,14 @@ const HomeMid = () => {
             .then(imgData => {
                 if (imgData.success) {
                     console.log(imgData.data.url);
-                    const allPostData = {
-                        userEmail: user?.email
+                    const postAllData = {
+                        userEmail: user?.email,
+                        userName: user?.displayName,
+                        postText: postText,
+                        postPhoto: imgData.data.url,
+                        likeCount: 0,
+                        loveCount: 0,
+
                     }
                 }
                 // console.log(imgData);

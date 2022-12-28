@@ -33,7 +33,10 @@ export default function NavBar() {
                     {
                         user?.uid ?
                             <div className="flex items-center">
-                                <img src={user?.photoURL} className='w-8 rounded-full md:mx-3' alt='person'></img>
+                                {
+                                    user?.photoURL && <img src={user?.photoURL} className='w-8 rounded-full md:mx-3' alt='person'></img>
+                                }
+                                
                                 <span className='mx-1 hidden lg:block text-white font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>
                                 <button onClick={logOut} className=" hidden md:block btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
                             </div>
