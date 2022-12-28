@@ -14,7 +14,7 @@ export default function NavBar() {
 
 
     return (
-        <nav className=" w-ful bg-pink-500  sticky top-0 z-10 shadow  ">
+        <nav className=" w-ful bg-secondary  sticky top-0 z-10 shadow  ">
             <div className="text-white justify-between h-16 px-4 md:mx-24 mx-auto lg:max-w-7xl items-center flex md:px-8">
                 <div>
                     <div className="flex items-center">
@@ -34,7 +34,7 @@ export default function NavBar() {
                         user?.uid ?
                             <div className="flex items-center">
                                 {
-                                    user?.photoURL && <img src={user?.photoURL} className='w-8 rounded-full md:mx-3' alt='person'></img>
+                                    user?.photoURL && <img src={user?.photoURL} className='w-8 rounded-full md:mx-3' alt=''></img>
                                 }
                                 
                                 <span className='mx-1 hidden lg:block text-white font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>

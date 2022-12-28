@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import PostCard from '../../Components/PostCard/PostCard';
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 
 const HomeMid = () => {
 
-    const { user } = useContext(AuthContext)
+    const { user, userInfo, } = useContext(AuthContext)
+    const [posts, setPosts] = useState([]);
+    const [ doFetch, setDoFetch] = useState();
 
     // console.log(user, "ok");
 
@@ -27,22 +30,52 @@ const HomeMid = () => {
             .then(res => res.json())
             .then(imgData => {
                 if (imgData.success) {
-                    console.log(imgData.data.url);
                     const postAllData = {
                         userEmail: user?.email,
-                        userName: user?.displayName,
+                        userName: userInfo?.name,
                         postText: postText,
                         postPhoto: imgData.data.url,
                         likeCount: 0,
                         loveCount: 0,
-
+                        totalReact: 0,
                     }
+
+
+                    fetch('http://localhost:5000/posts', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(postAllData)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.acknowledged) {
+                                // toast('product add successfully')
+                                // console.log(data, "post success");
+                                form.reset();
+                                // navigate('/dashbord/myProducts')
+                            }
+                        })
+                        .catch(er => console.error(er));
+
+
+
                 }
                 // console.log(imgData);
             })
-
         // console.log(url);
     }
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/posts/popular')
+            .then(res => res.json())
+            .then(data =>{
+                setPosts(data)
+                setDoFetch(false)
+            })
+    }, [doFetch])
 
 
     return (
@@ -73,6 +106,18 @@ const HomeMid = () => {
                         <p>please login first for post something !</p>
                     </div>
             }
+
+            <div className=''>
+                {
+
+                    posts.map(post => <PostCard
+                            key={post._id}
+                            post={post}
+                    
+                    ></PostCard>)
+
+                }
+            </div>
 
         </div>
     );
