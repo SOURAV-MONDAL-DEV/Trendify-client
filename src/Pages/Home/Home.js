@@ -9,7 +9,7 @@ const Home = () => {
             <div className='hidden lg:block '>
                 <Menu></Menu>
             </div>
-            <div className=''>
+            <div style={{maxHeight:"90vh"}} className='lg:overflow-y-scroll'>
                 <Outlet></Outlet>
             </div>
             <div className='hidden lg:block '>

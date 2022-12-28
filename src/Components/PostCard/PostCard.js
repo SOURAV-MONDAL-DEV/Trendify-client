@@ -11,7 +11,7 @@ const PostCard = ({ post }) => {
     console.log(post);
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl my-2">
+            <div className="card w-96 bg-base-100 shadow-xl my-2 mx-auto">
                 <div className="card-body">
 
                     <div className='flex items-center'>
@@ -46,7 +46,7 @@ const PostCard = ({ post }) => {
                         <button className='text-secondary'>Details</button>
                     </div>
                     <form className='flex items-center'>
-                        <input name="comment" type="text" className='border' placeholder='write comments ' ></input>
+                        <input name="comment" type="text" className='border border-secondary rounded mr-2 px-2 w-full' placeholder='write comments ' ></input>
                         <button type='submit' className='btn btn-secondary btn-xs'>comment</button>
                     </form>
                 </div>
