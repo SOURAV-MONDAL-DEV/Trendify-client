@@ -5,14 +5,14 @@ import Menu from '../Menu/Menu';
 
 const Home = () => {
     return (
-        <div className='lg:grid grid-cols-3 '>
-            <div className='hidden lg:block '>
+        <div className='lg:flex  '>
+            <div className='hidden lg:block basis-4/12 '>
                 <Menu></Menu>
             </div>
-            <div style={{maxHeight:"90vh"}} className='lg:overflow-y-scroll'>
+            <div style={{maxHeight:"90vh"}} className='lg:overflow-y-scroll basis-5/12'>
                 <Outlet></Outlet>
             </div>
-            <div className='hidden lg:block '>
+            <div className='hidden lg:block basis-3/12 '>
                 <p>right side</p>
             </div>
         </div>

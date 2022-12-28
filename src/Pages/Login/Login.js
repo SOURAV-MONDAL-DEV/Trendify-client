@@ -5,7 +5,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
 
-    const {providerLogin, signIn} = useContext(AuthContext);
+    const {providerLogin, signIn, user} = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -32,7 +32,7 @@ const Login = () => {
     }
 
 
-    
+    console.log(user);
 
     const googleProvider = new GoogleAuthProvider()
     const handleGoogleSignIn = () => {
@@ -42,6 +42,7 @@ const Login = () => {
                 const socialLoginUser = {
                     name: result?.user?.displayName,
                     email: result?.user?.email,
+                    userPhoto: result?.user?.photoURL
                 }
 
                 fetch(`http://localhost:5000/users/${result?.user?.email}`, {

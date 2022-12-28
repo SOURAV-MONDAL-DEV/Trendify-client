@@ -8,7 +8,6 @@ import { AiOutlineHeart } from 'react-icons/ai';
 
 const PostCard = ({ post }) => {
     const { _id, userEmail, userName, postText, postPhoto, totalReact, likeCount, loveCount } = post;
-    console.log(post);
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl my-2 mx-auto">
@@ -42,8 +41,8 @@ const PostCard = ({ post }) => {
                             <button className='' > <AiOutlineHeart className='text-2xl text-secondary ml-2'></AiOutlineHeart> </button>
                             {/* <button className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>  */}
                         </div>
-                        <button className='text-secondary'>comment</button>
-                        <button className='text-secondary'>Details</button>
+                        <button className='text-secondary font-semibold'>Comment</button>
+                        <button className='text-secondary font-semibold'>Details</button>
                     </div>
                     <form className='flex items-center'>
                         <input name="comment" type="text" className='border border-secondary rounded mr-2 px-2 w-full' placeholder='write comments ' ></input>
