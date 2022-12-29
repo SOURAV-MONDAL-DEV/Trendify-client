@@ -10,7 +10,10 @@ const HomeMid = () => {
     const [posts, setPosts] = useState([]);
     const [doFetch, setDoFetch] = useState(false);
 
-    // console.log(user, "ok");
+
+    const current = new Date();
+    const date = `${current.getFullYear()}-${current.getMonth() + 1}-${current.getDate()}`;
+
 
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
@@ -34,8 +37,7 @@ const HomeMid = () => {
                 userName: userInfo?.name,
                 postText: postText,
                 likeCount: 0,
-                loveCount: 0,
-                totalReact: 0,
+                postingDate:date,
             }
 
 
@@ -76,8 +78,7 @@ const HomeMid = () => {
                             postText: postText,
                             postPhoto: imgData.data.url,
                             likeCount: 0,
-                            loveCount: 0,
-                            totalReact: 0,
+                            postingDate:date,
                         }
 
 
@@ -168,6 +169,8 @@ const HomeMid = () => {
                     posts.map(post => <PostCard
                         key={post._id}
                         post={post}
+                        doFetch={doFetch}
+                         setDoFetch={setDoFetch}
 
                     ></PostCard>)
 

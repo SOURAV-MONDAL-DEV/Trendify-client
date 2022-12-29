@@ -15,7 +15,6 @@ const Menu = () => {
     const { userInfo } = useContext(AuthContext);
     const { _id, email, name, userPhoto } = userInfo;
 
-    console.log(userInfo);
 
 
     return (
