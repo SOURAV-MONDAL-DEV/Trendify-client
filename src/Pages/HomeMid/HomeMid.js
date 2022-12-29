@@ -137,7 +137,7 @@ const HomeMid = () => {
 
             {
                 user?.uid ?
-                    <form onSubmit={handleSubmit} className="card-body p-2 pb-5">
+                    <form onSubmit={handleSubmit} className=" p-2 pb-5 bg-white rounded-b-lg">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Whats on your mind?</span>

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import HomeMid from '../HomeMid/HomeMid';
 import Menu from '../Menu/Menu';
 
 const Home = () => {
     return (
-        <div className='lg:flex  '>
+        <div className='lg:flex bg-gray-200 '>
             <div className='hidden lg:block basis-4/12 '>
                 <Menu></Menu>
             </div>
