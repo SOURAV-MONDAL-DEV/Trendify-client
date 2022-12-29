@@ -84,8 +84,6 @@ const PostCard = ({ post }) => {
 
 
 
-
-
     }
 
     // do like /\
@@ -136,6 +134,44 @@ const PostCard = ({ post }) => {
 
 
     // handle dislike /\
+
+
+    // handle comments \/
+
+
+    const handlePostComments = (event) => {
+        event.preventDefault();
+        const commentText = event.target.comment.value;
+        
+        const commentInfo = {
+            userEmail: user?.email,
+            postId: _id,
+            commentText: commentText
+        }
+
+        fetch('http://localhost:5000/comments', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(commentInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast("comment success")
+                }
+            })
+            .catch(er => console.error(er));
+
+
+
+
+    }
+
+
+
+    // handle comments /\
 
 
 
@@ -195,8 +231,8 @@ const PostCard = ({ post }) => {
                         </div>
 
                     </div>
-                    <form className='flex items-center'>
-                        <input name="comment" type="text" className='border border-secondary rounded mr-2 px-2 w-full' placeholder='write comments ' ></input>
+                    <form onSubmit={handlePostComments} className='flex items-center'>
+                        <input name="comment" type="text" className='border border-secondary rounded mr-2 px-2 w-full' placeholder='write comments' required ></input>
                         <button type='submit' className='btn btn-secondary btn-xs'>comment</button>
                     </form>
                 </div>
