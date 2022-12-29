@@ -18,6 +18,8 @@ const PostCard = ({ post }) => {
     const { user, userInfo, } = useContext(AuthContext)
     const [doFetch, setDoFetch] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
+    const [comments, setComments] = useState('');
+    const [commentOpen, setCommentOpen] = useState(false);
 
 
 
@@ -38,12 +40,13 @@ const PostCard = ({ post }) => {
         fetch(`http://localhost:5000/isLiked/?email=${user?.email}&postId=${_id}`)
             .then(res => res.json())
             .then(data => {
-                if(data[0]?.postId === _id){
-                 setIsLiked(true)
+                console.log(data.postId);
+                if (data?.postId === _id) {
+                    setIsLiked(true)
                 }
                 setDoFetch(false)
             })
-    }, [] )
+    }, [])
 
 
     // fetch like information /\
@@ -141,10 +144,13 @@ const PostCard = ({ post }) => {
 
     const handlePostComments = (event) => {
         event.preventDefault();
+        const form = event.target;
+
         const commentText = event.target.comment.value;
-        
+
         const commentInfo = {
             userEmail: user?.email,
+            userName : userName,
             postId: _id,
             commentText: commentText
         }
@@ -160,11 +166,10 @@ const PostCard = ({ post }) => {
             .then(data => {
                 if (data.acknowledged) {
                     toast("comment success")
+                    form.reset();
                 }
             })
             .catch(er => console.error(er));
-
-
 
 
     }
@@ -179,8 +184,17 @@ const PostCard = ({ post }) => {
 
 
 
+    const handleClickComment = () => {
 
+        setCommentOpen(!commentOpen);
 
+        fetch(`http://localhost:5000/comments?postId=${_id}`)
+            .then(res => res.json())
+            .then(data => {
+                setComments(data)
+            })
+
+    }
 
 
 
@@ -213,18 +227,15 @@ const PostCard = ({ post }) => {
                 <div className="card-body">
                     <div className='grid grid-cols-3 text-center'>
                         <div>
-
                             {
-                                 isLiked ?
-                                  <button onClick={handleDisLike} className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>
-                                 :
-                                 <button onClick={handleLike} className='' > <AiOutlineHeart className='text-2xl text-secondary ml-2'></AiOutlineHeart> </button>
+                                isLiked ?
+                                    <button onClick={handleDisLike} className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>
+                                    :
+                                    <button onClick={handleLike} className='' > <AiOutlineHeart className='text-2xl text-secondary ml-2'></AiOutlineHeart> </button>
                             }
-
-                            
                         </div>
                         <div>
-                            <button className='' > <IoMdPaperPlane className='text-2xl text-secondary ml-2'></IoMdPaperPlane> </button>
+                            <button onClick={handleClickComment} className='' > <IoMdPaperPlane className='text-2xl text-secondary ml-2'></IoMdPaperPlane> </button>
                         </div>
                         <div>
                             <button className='' > <FiMoreHorizontal className='text-2xl text-secondary font-bold ml-2'></FiMoreHorizontal> </button>
@@ -235,6 +246,17 @@ const PostCard = ({ post }) => {
                         <input name="comment" type="text" className='border border-secondary rounded mr-2 px-2 w-full' placeholder='write comments' required ></input>
                         <button type='submit' className='btn btn-secondary btn-xs'>comment</button>
                     </form>
+                </div>
+                <div className="card-body">
+                    {
+                        comments && commentOpen && comments?.map(comment => <div key={comment?._id}>
+                            <div className='flex items-center'>
+                                <BsPersonCircle className="text- "></BsPersonCircle>
+                                <span className='mx-1 hidden lg:block text- md:text-lg'>{comment?.userName}</span>
+                            </div>
+                            <h1 className='ml-7'>{comment?.commentText}</h1>
+                        </div>)
+                    }
                 </div>
             </div>
 
