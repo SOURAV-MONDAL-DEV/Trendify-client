@@ -6,9 +6,9 @@ import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const HomeMid = () => {
 
-    const { user, userInfo, } = useContext(AuthContext)
+    const { user, userInfo, doFetch, setDoFetch } = useContext(AuthContext)
     const [posts, setPosts] = useState([]);
-    const [doFetch, setDoFetch] = useState(false);
+    // const [doFetch, setDoFetch] = useState(false);
 
 
     const current = new Date();
@@ -35,6 +35,7 @@ const HomeMid = () => {
             const postAllData = {
                 userEmail: user?.email,
                 userName: userInfo?.name,
+                userPhoto: userInfo?.userPhoto,
                 postText: postText,
                 likeCount: 0,
                 postingDate:date,
@@ -75,6 +76,7 @@ const HomeMid = () => {
                         const postAllData = {
                             userEmail: user?.email,
                             userName: userInfo?.name,
+                            userPhoto: userInfo?.userPhoto,
                             postText: postText,
                             postPhoto: imgData.data.url,
                             likeCount: 0,
@@ -128,9 +130,9 @@ const HomeMid = () => {
             .then(res => res.json())
             .then(data => {
                 setPosts(data)
-                setDoFetch(false)
+                setDoFetch(true)
             })
-    }, [doFetch])
+    }, )
 
 
     return (

@@ -115,7 +115,7 @@ const AboutPost = () => {
                     <div>
                         <div className='flex items-center my-2  mx-auto'>
                             <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart>
-                            <p className=' font-semibold ml-5'>Total : </p>
+                            <p className=' font-semibold ml-5'>Total : {likeCount} </p>
                         </div>
                         <div className='flex items-center my-2  mx-auto'>
                             <IoMdPaperPlane className='text-2xl text-secondary ml-2'></IoMdPaperPlane>

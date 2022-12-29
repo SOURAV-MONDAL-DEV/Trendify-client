@@ -13,7 +13,7 @@ const MoreOption = () => {
 
     return (
         <div>
-            <p>more option</p>
+            <p className='m-5 text-xl font-bold'>More option</p>
 
             <div className='flex items-center my-2  mx-auto'>
                 <input type="text" placeholder="Search tredify" className="input input-bordered input-success w-full lg:w-48 max-w-xs m-5" />

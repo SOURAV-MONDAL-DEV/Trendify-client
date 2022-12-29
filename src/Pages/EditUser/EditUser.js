@@ -10,9 +10,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { GrMailOption } from "react-icons/gr";
 import { Link } from 'react-router-dom';
 
-
-const Menu = () => {
-
+const EditUser = () => {
     const { userInfo } = useContext(AuthContext);
     const { _id, email, name, userPhoto } = userInfo;
 
@@ -25,39 +23,48 @@ const Menu = () => {
                     <img src={userPhoto} className='w-24 rounded-full md:mx-3' alt=''></img>
                     <p className='text-2xl font-bold'>{name}</p>
                 </div>
-                <Link to="/editUser" ><FaRegEdit className='basis-1/6 mt-10 text-2xl'></FaRegEdit></Link>
+                {/* <Link to="/editUser" ><FaRegEdit className='basis-1/6 mt-10 text-2xl'></FaRegEdit></Link> */}
             </div>
             <div className='m-8 lg:'>
-                <p className=' font-semibold'>No Friends yet</p>
                 <div className='flex items-center my-2  mx-auto'>
                     <BsFillBriefcaseFill className='inline text-2xl text-gray-500'></BsFillBriefcaseFill>
                     <p className=' font-semibold ml-5'>Works at:</p>
                 </div>
+                <input type="text" placeholder="" className="input input-bordered input-secondary w-full max-w-xs" />
                 <div className='flex items-center my-2  mx-auto'>
                     <BsFillHouseDoorFill className='inline  text-2xl text-gray-500'></BsFillHouseDoorFill>
                     <p className=' font-semibold ml-5'>Lives in:</p>
                 </div>
+                <input type="text" placeholder="" className="input input-bordered input-secondary w-full max-w-xs" />
                 <div className='flex items-center my-2  mx-auto'>
                     <MdLocationOn className='inline -ml-1 text-3xl text-gray-500'></MdLocationOn>
                     <p className=' font-semibold ml-5'>Address : </p>
                 </div>
+                <input type="text" placeholder="" className="input input-bordered input-secondary w-full max-w-xs" />
                 <div className='flex items-center my-2  mx-auto'>
                     <IoMdSchool className='inline -ml-1 text-3xl text-gray-500'></IoMdSchool>
                     <p className=' font-semibold ml-5'>College/University: </p>
                 </div>
+                <input type="text" placeholder="" className="input input-bordered input-secondary w-full max-w-xs" />
                 <div className='flex items-center my-2  mx-auto'>
                     <BsFillTelephoneFill className='inline text-xl text-gray-500'></BsFillTelephoneFill>
                     <p className=' font-semibold ml-5'>No number </p>
                 </div>
+                <input type="text" placeholder="" className="input input-bordered input-secondary w-full max-w-xs" />
                 <div className='flex items-center my-2  mx-auto'>
                     <MdEmail className='inline text-xl text-gray-500'></MdEmail>
                     <p className=' font-semibold ml-5'>{email} </p>
                 </div>
+                <input type="text" placeholder="" className="input input-bordered input-secondary w-full max-w-xs" />
             </div>
+            <div className='flex justify-end mx-10 mb-20'>
+            <button type='submit' className='btn btn-secondary px-10 btn-md'>Submit</button>
+            </div>
+
 
 
         </div>
     );
 };
 
-export default Menu;
+export default EditUser;

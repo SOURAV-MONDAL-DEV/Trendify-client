@@ -12,11 +12,11 @@ import { useNavigate } from 'react-router-dom';
 
 
 const PostCard = ({ post }) => {
-    const { _id, userEmail, userName, postText, postPhoto, totalReact, likeCount, loveCount } = post;
+    const { _id, userEmail, userName, userPhoto, postText, postPhoto, totalReact, likeCount, loveCount } = post;
 
 
-    const { user, userInfo, } = useContext(AuthContext)
-    const [doFetch, setDoFetch] = useState(false);
+    const { user, userInfo, doFetch, setDoFetch } = useContext(AuthContext)
+    // const [doFetch, setDoFetch] = useState(false);
     const [isLiked, setIsLiked] = useState(false);
     const [comments, setComments] = useState('');
     const [commentOpen, setCommentOpen] = useState(false);
@@ -36,9 +36,10 @@ const PostCard = ({ post }) => {
                 if (data?.postId === _id) {
                     setIsLiked(true)
                 }
-                setDoFetch(false)
+                console.log(data);
+                // setDoFetch(true)
             })
-    }, [])
+    }, [] )
 
 
     // fetch like information /\
@@ -72,7 +73,7 @@ const PostCard = ({ post }) => {
             .then(data => {
                 if (data.acknowledged) {
                     toast("Liked")
-                    setDoFetch(true)
+                    // setDoFetch(false)
                     setIsLiked(true)
                 }
             })
@@ -91,8 +92,7 @@ const PostCard = ({ post }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast(1)
-                    // setDoFetch(true)
+                    setDoFetch(true)
                     // setIsLiked(true)
                 }
             })
@@ -154,7 +154,7 @@ const PostCard = ({ post }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast("--")
+                    toast("unliked")
                     // setDoFetch(true)
                     // setIsLiked(true)
                 }
@@ -256,9 +256,9 @@ const PostCard = ({ post }) => {
 
                     <div className='flex items-center'>
                         {
-                            post?.userPhoto ?
+                            userPhoto ?
                                 <>
-                                    <img src={post?.photoURL} className='w-8 rounded-full md:mx-3' alt=''></img>
+                                    <img src={userPhoto} className='w-8 rounded-full md:mx-3' alt=''></img>
                                 </>
                                 :
                                 <>
@@ -279,13 +279,14 @@ const PostCard = ({ post }) => {
                     {
                         userInfo ?
                             <div className='grid grid-cols-3 text-center'>
-                                <div>
+                                <div className='inline justify-center items-center'>
                                     {
                                         isLiked ?
                                             <button onClick={handleDisLike} className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>
                                             :
                                             <button onClick={handleLike} className='' > <AiOutlineHeart className='text-2xl text-secondary ml-2'></AiOutlineHeart> </button>
                                     }
+                                    <p className='pl-2 inline text-gray-500'>{likeCount}</p>
                                 </div>
                                 <div>
                                     <button onClick={handleClickComment} className='' > <IoMdPaperPlane className='text-2xl text-secondary ml-2'></IoMdPaperPlane> </button>

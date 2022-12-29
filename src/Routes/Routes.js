@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main/Main";
 import AboutPost from "../Pages/AboutPost/AboutPost";
+import EditUser from "../Pages/EditUser/EditUser";
 import Home from "../Pages/Home/Home";
 import HomeMid from "../Pages/HomeMid/HomeMid";
 import Login from "../Pages/Login/Login";
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
           {
             path: '/moreOption',
             element: <MoreOption></MoreOption>
+          },
+          {
+            path: '/editUser',
+            element: <EditUser></EditUser>
           },
         ]
       },
