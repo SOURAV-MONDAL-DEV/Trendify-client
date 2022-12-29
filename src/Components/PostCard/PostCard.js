@@ -34,18 +34,21 @@ const PostCard = ({ post }) => {
     // }
 
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/likes/?email=${user?.email}&postId=${_id}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             toast('fetched like condition')
-    //             setIsLiked(true)
-    //             setDoFetch(false)
-    //         })
-    // },)
+    useEffect(() => {
+        fetch(`http://localhost:5000/isLiked/?email=${user?.email}&postId=${_id}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data[0]?.postId === _id){
+                 setIsLiked(true)
+                }
+                setDoFetch(false)
+            })
+    }, [] )
 
 
     // fetch like information /\
+
+
 
 
 
@@ -61,7 +64,6 @@ const PostCard = ({ post }) => {
             postId: _id
         }
 
-        console.log(likeInfo);
 
 
         fetch('http://localhost:5000/likes', {
@@ -74,7 +76,6 @@ const PostCard = ({ post }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast(' like ')
                     setDoFetch(true)
                     setIsLiked(true)
                 }
@@ -90,6 +91,51 @@ const PostCard = ({ post }) => {
     // do like /\
 
 
+
+
+
+
+
+
+
+
+
+    // handle dislike \/
+
+
+
+    const handleDisLike = () => {
+
+
+        const likeInfo = {
+            userEmail: user?.email,
+            postId: _id
+        }
+
+        fetch('http://localhost:5000/likes', {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(likeInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data) {
+                    setIsLiked(false)
+                }
+            })
+            .catch(er => console.error(er));
+
+
+    }
+
+
+
+
+
+    // handle dislike /\
 
 
 
@@ -134,7 +180,7 @@ const PostCard = ({ post }) => {
 
                             {
                                  isLiked ?
-                                  <button className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>
+                                  <button onClick={handleDisLike} className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>
                                  :
                                  <button onClick={handleLike} className='' > <AiOutlineHeart className='text-2xl text-secondary ml-2'></AiOutlineHeart> </button>
                             }
