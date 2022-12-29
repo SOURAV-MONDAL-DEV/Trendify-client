@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Menu from '../Menu/Menu';
+import MoreOption from '../MoreOption/MoreOption';
 
 const Home = () => {
     return (
@@ -12,7 +13,7 @@ const Home = () => {
                 <Outlet></Outlet>
             </div>
             <div className='hidden lg:block basis-3/12 '>
-                <p>right side</p>
+                <MoreOption></MoreOption>
             </div>
         </div>
     );

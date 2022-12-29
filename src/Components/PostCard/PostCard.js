@@ -5,10 +5,10 @@ import { AiFillLike } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { IoMdPaperPlane } from 'react-icons/io';
-import { CiCircleMore } from 'react-icons/ci';
 import { FiMoreHorizontal } from 'react-icons/fi';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 const PostCard = ({ post }) => {
@@ -21,26 +21,18 @@ const PostCard = ({ post }) => {
     const [comments, setComments] = useState('');
     const [commentOpen, setCommentOpen] = useState(false);
 
-
-
-
+    const navigate = useNavigate();
 
 
 
     // fetch like information \/
 
 
-    // const likeW = {
-    //     userEmail: user?.email,
-    //     postId:_id
-    // }
-
 
     useEffect(() => {
         fetch(`http://localhost:5000/isLiked/?email=${user?.email}&postId=${_id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data.postId);
                 if (data?.postId === _id) {
                     setIsLiked(true)
                 }
@@ -79,8 +71,29 @@ const PostCard = ({ post }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
+                    toast("Liked")
                     setDoFetch(true)
                     setIsLiked(true)
+                }
+            })
+            .catch(er => console.error(er));
+
+
+
+
+            fetch('http://localhost:5000/posts', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({id:_id, increase: 1})
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast(1)
+                    // setDoFetch(true)
+                    // setIsLiked(true)
                 }
             })
             .catch(er => console.error(er));
@@ -130,6 +143,25 @@ const PostCard = ({ post }) => {
             .catch(er => console.error(er));
 
 
+            
+            fetch('http://localhost:5000/posts', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({id:_id, increase: -1})
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast("--")
+                    // setDoFetch(true)
+                    // setIsLiked(true)
+                }
+            })
+            .catch(er => console.error(er));
+
+
     }
 
 
@@ -146,11 +178,13 @@ const PostCard = ({ post }) => {
         event.preventDefault();
         const form = event.target;
 
+        // console.log("hit");
+
         const commentText = event.target.comment.value;
 
         const commentInfo = {
             userEmail: user?.email,
-            userName : userName,
+            userName: userName,
             postId: _id,
             commentText: commentText
         }
@@ -199,6 +233,22 @@ const PostCard = ({ post }) => {
 
 
 
+    // more details \/
+
+
+    const handleClickMore = () => {
+
+        navigate("/aboutPost", { state: { post } })
+
+    }
+
+
+
+
+
+
+
+
     return (
         <div className=''>
             <div className="card w-screen lg:w-full bg-base-100 shadow-xl m-2 mx-auto">
@@ -225,27 +275,66 @@ const PostCard = ({ post }) => {
                 }
 
                 <div className="card-body">
-                    <div className='grid grid-cols-3 text-center'>
-                        <div>
-                            {
-                                isLiked ?
-                                    <button onClick={handleDisLike} className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>
-                                    :
-                                    <button onClick={handleLike} className='' > <AiOutlineHeart className='text-2xl text-secondary ml-2'></AiOutlineHeart> </button>
-                            }
-                        </div>
-                        <div>
-                            <button onClick={handleClickComment} className='' > <IoMdPaperPlane className='text-2xl text-secondary ml-2'></IoMdPaperPlane> </button>
-                        </div>
-                        <div>
-                            <button className='' > <FiMoreHorizontal className='text-2xl text-secondary font-bold ml-2'></FiMoreHorizontal> </button>
-                        </div>
 
-                    </div>
-                    <form onSubmit={handlePostComments} className='flex items-center'>
-                        <input name="comment" type="text" className='border border-secondary rounded mr-2 px-2 w-full' placeholder='write comments' required ></input>
-                        <button type='submit' className='btn btn-secondary btn-xs'>comment</button>
-                    </form>
+                    {
+                        userInfo ?
+                            <div className='grid grid-cols-3 text-center'>
+                                <div>
+                                    {
+                                        isLiked ?
+                                            <button onClick={handleDisLike} className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>
+                                            :
+                                            <button onClick={handleLike} className='' > <AiOutlineHeart className='text-2xl text-secondary ml-2'></AiOutlineHeart> </button>
+                                    }
+                                </div>
+                                <div>
+                                    <button onClick={handleClickComment} className='' > <IoMdPaperPlane className='text-2xl text-secondary ml-2'></IoMdPaperPlane> </button>
+                                </div>
+                                <div>
+                                    <button onClick={handleClickMore} className='' > <FiMoreHorizontal className='text-2xl text-secondary font-bold ml-2'></FiMoreHorizontal> </button>
+                                </div>
+
+                            </div>
+                            :
+                            <div className='grid grid-cols-3 text-center'>
+                                <div>
+                                    {
+                                        isLiked ?
+                                            <button className='' > <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart> </button>
+                                            :
+                                            <button className='' > <AiOutlineHeart className='text-2xl text-secondary ml-2'></AiOutlineHeart> </button>
+                                    }
+                                </div>
+                                <div>
+                                    <button onClick={handleClickComment} className='' > <IoMdPaperPlane className='text-2xl text-secondary ml-2'></IoMdPaperPlane> </button>
+                                </div>
+                                <div>
+                                    <button className='' > <FiMoreHorizontal className='text-2xl text-secondary font-bold ml-2'></FiMoreHorizontal> </button>
+                                </div>
+                            </div>
+                    }
+
+
+
+
+
+
+                    {
+                        userInfo ?
+
+                            <form onSubmit={handlePostComments} className='flex items-center'>
+                                <input name="comment" type="text" className='border border-secondary rounded mr-2 px-2 w-full' placeholder='write comments' required ></input>
+                                <button type='submit' className='btn btn-secondary btn-xs'>comment</button>
+                            </form>
+
+                            :
+
+                            <p className='text-gray-500 text-center'>please login first for like and comment</p>
+
+
+                    }
+
+
                 </div>
                 <div className="card-body">
                     {

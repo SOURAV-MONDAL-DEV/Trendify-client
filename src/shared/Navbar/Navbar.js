@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../img/Fire-Logo.png"
 import { FaHome } from 'react-icons/fa';
 import { MdPermMedia } from 'react-icons/md';
@@ -7,10 +7,17 @@ import { BsPersonPlusFill } from 'react-icons/bs';
 import { BsPersonFill } from 'react-icons/bs';
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
+import { FiMoreVertical } from "react-icons/fi";
+import { TbListDetails } from "react-icons/tb";
 
 export default function NavBar() {
 
     const { user, logOut, userInfo } = useContext(AuthContext);
+    const navigate = useNavigate()
+
+    const handlePlusClick = () =>{
+        navigate("/login")
+    }
 
 
     return (
@@ -23,10 +30,10 @@ export default function NavBar() {
                     </div>
                 </div>
                 <div className="flex gap-4 lg:gap-8">
-                    <NavLink to="/"><FaHome className="text-4xl"> </FaHome></NavLink>
-                    <NavLink to="/media"><MdPermMedia className="text-4xl"></MdPermMedia></NavLink>
-                    <NavLink to="/message"><MdMessage className="text-4xl"></MdMessage></NavLink>
-                    <NavLink to="/menu" className='lg:hidden' >...</NavLink>
+                    <NavLink to="/"><FaHome className="text-2xl"> </FaHome></NavLink>
+                    <NavLink to="/media"><MdPermMedia className="text-2xl"></MdPermMedia></NavLink>
+                    <NavLink to="/message"><MdMessage className="text-2xl"></MdMessage></NavLink>
+                    <NavLink to="/menu"><TbListDetails className="text-2xl"></TbListDetails></NavLink>
 
                 </div>
                 <div className="">
@@ -38,14 +45,14 @@ export default function NavBar() {
                                 }
                                 
                                 <span className='mx-1 hidden lg:block text-white font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>
-                                <button onClick={logOut} className=" hidden md:block btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
+                                <button onClick={logOut} className=" hidden btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
+                                <Link to="/moreOption" className="lg:hidden"><FiMoreVertical className="ml-2" ></FiMoreVertical></Link>
                             </div>
                             :
                             <div className="flex items-center">
                                 {/* pleceholder image bosbe,,, mobile a dakhabe */}
-                                <BsPersonPlusFill className="text-4xl md:hidden"></BsPersonPlusFill>
-                                <BsPersonFill className="text-4xl hidden md:block"></BsPersonFill>
-                                <Link to='/login'><button className=" hidden md:block btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3">Login</button></Link>
+                                <BsPersonPlusFill onClick={handlePlusClick} className="text-4xl "></BsPersonPlusFill>
+                                {/* <Link to='/login'><button className=" hidden md:block btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3">Login</button></Link> */}
                             </div>
                     }
                 </div>
