@@ -43,9 +43,9 @@ const Login = () => {
                     name: result?.user?.displayName,
                     email: result?.user?.email,
                     userPhoto: result?.user?.photoURL,
-                    address:"unknown" ,
-                    work: "unknown",
-                    college: "unknown",
+                    // address:"" ,
+                    // work: "",
+                    // college: "",
                 }
 
                 fetch(`https://trendify-server.vercel.app/users/${result?.user?.email}`, {

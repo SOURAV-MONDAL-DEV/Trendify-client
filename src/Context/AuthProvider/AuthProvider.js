@@ -10,7 +10,7 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [userInfo, setUserInfo] = useState("");
-    const [doFetch, setDoFetch] = useState(false);
+    const [doFetch, setDoFetch] = useState(null);
 
 
 
@@ -21,10 +21,11 @@ const AuthProvider = ({children}) => {
             .then(data => {
                 if(data[0]){
                     setUserInfo(data[0])
+                    setDoFetch(false);
                 }
                 
             })
-    }, [user?.uid])
+    }, [doFetch, user])
 
 
 

@@ -11,12 +11,16 @@ import { FaRegEdit } from "react-icons/fa";
 import { GrMailOption } from "react-icons/gr";
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import person from "../../img/person.png";
+
 
 const EditUser = () => {
-    const { userInfo } = useContext(AuthContext);
+    const { userInfo , doFetch, setDoFetch } = useContext(AuthContext);
     const { _id, email, name, userPhoto, work, address, college, } = userInfo;
+    const [openInput, setOpenInput] = useState(false)
 
 
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
 
 
 
@@ -44,18 +48,89 @@ const EditUser = () => {
 
 
         fetch(`https://trendify-server.vercel.app/users/${userInfo?.email}`, {
-                            method: 'PUT',
-                            headers: {
-                                'content-type': 'application/json'
-                            },
-                            body: JSON.stringify(userData)
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast("Update success")
+            })
+            .catch(er => console.error(er));
+
+
+
+
+    }
+
+
+
+
+    const handleEditBtn = () => {
+        setOpenInput(!openInput)
+
+    }
+
+
+    const handleUploadPhoto = (event) =>{
+        event.preventDefault();
+        const form = event.target;
+        const image = form.image.files[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+
+
+        
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    const userData = {
+                        name,
+                        email,
+                        work,
+                        address,
+                        college,
+                        userPhoto : imgData.data.url,
+                    }
+            
+
+
+                    fetch(`https://trendify-server.vercel.app/users/${email}`, {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(userData)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.acknowledged) {
+                                toast('Photo uploaded')
+                                setOpenInput(false);
+                                setDoFetch(true)
+
+                                // form.reset();
+                                // setDoFetch(true)
+                                // navigate('/dashbord/myProducts')
+                            }
                         })
-                            .then(res => res.json())
-                            .then(data => {
-                                toast("Update success")
-                                console.log(data);                                
-                            })
-                            .catch(er => console.error(er));
+                        .catch(er => console.error(er));
+
+
+
+                }
+                // console.log(imgData);
+            })
+        // console.log(url);
+
 
 
 
@@ -67,12 +142,35 @@ const EditUser = () => {
 
     return (
         <div>
-            <div className='flex flex-row'>
-                <div className='basis-5/6 flex flex-col items-center my-5'>
-                    <img src={userPhoto} className='w-24 rounded-full md:mx-3' alt=''></img>
-                    <p className='text-2xl font-bold'>{name}</p>
-                </div>
-                {/* <Link to="/editUser" ><FaRegEdit className='basis-1/6 mt-10 text-2xl'></FaRegEdit></Link> */}
+            <div className=' flex flex-col items-center my-5'>
+                    
+                    {
+                        userPhoto ?
+                            <img src={userPhoto} className='w-24 rounded-full md:mx-3' alt=''></img>
+                            :
+                            <img src={person} className='w-24 rounded-full md:mx-3' alt=''></img>
+                    }
+
+                    <div className='flex justify-end'>
+                        <button onClick={handleEditBtn} ><MdOutlineDriveFileRenameOutline className='text-4xl text-secondary m-2'></MdOutlineDriveFileRenameOutline></button>
+                    </div>
+
+                    {
+                        openInput && <form onSubmit={handleUploadPhoto} className='flex  items-end justify-around mb-10'>
+                            <div className="form-control pr-2">
+                                <label className="label">
+                                    <span className="label-text">Add new profile photo</span>
+                                </label>
+                                <input className='text-gray-600 p-3 border border-pink-500 rounded-md' name="image" type="file" placeholder="Add photo" ></input>
+                            </div>
+                            <div className="form-control flex ">
+                                <input className='btn btn-secondary btn-sm' type='submit' value="upload" />
+                            </div>
+                        </form>
+
+                    }
+
+                <p className='text-2xl font-bold'>{name}</p>
             </div>
             <form onSubmit={handleSubmit} className='m-8 lg:'>
 
