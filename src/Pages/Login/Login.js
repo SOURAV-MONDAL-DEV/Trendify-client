@@ -42,7 +42,10 @@ const Login = () => {
                 const socialLoginUser = {
                     name: result?.user?.displayName,
                     email: result?.user?.email,
-                    userPhoto: result?.user?.photoURL
+                    userPhoto: result?.user?.photoURL,
+                    address:"unknown" ,
+                    work: "unknown",
+                    college: "unknown",
                 }
 
                 fetch(`https://trendify-server.vercel.app/users/${result?.user?.email}`, {

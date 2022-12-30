@@ -21,6 +21,10 @@ const SignUp = () => {
         const signUser = {
             name,
             email,
+            address:"" ,
+            work: "",
+            college: "",
+            userPhoto: ""
         }
 
 

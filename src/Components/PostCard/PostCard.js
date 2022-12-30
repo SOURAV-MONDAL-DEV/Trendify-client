@@ -36,7 +36,6 @@ const PostCard = ({ post }) => {
                 if (data?.postId === _id) {
                     setIsLiked(true)
                 }
-                console.log(data);
                 // setDoFetch(true)
             })
     }, [])
