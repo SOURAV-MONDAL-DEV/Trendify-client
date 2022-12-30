@@ -41,7 +41,7 @@ export default function NavBar() {
                         user?.uid ?
                             <div className="flex items-center">
                                 {
-                                    userInfo?.userPhoto && <img src={userInfo?.userPhoto} className='w-8 rounded-full md:mx-3' alt=''></img>
+                                    userInfo?.userPhoto && <img onClick={() => navigate("/menu") } src={userInfo?.userPhoto} className='w-8 rounded-full md:mx-3' alt=''></img>
                                 }
                                 
                                 <span className='mx-1 hidden lg:block text-white font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>

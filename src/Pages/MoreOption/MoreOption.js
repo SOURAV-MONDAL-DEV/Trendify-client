@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { BsPersonFill, BsPersonPlusFill, BsSearch } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const MoreOption = () => {
+
+    const navigate = useNavigate();
 
 
     const { user, logOut, userInfo } = useContext(AuthContext);
@@ -24,14 +26,17 @@ const MoreOption = () => {
                     user?.uid ?
                         <div className="flex flex-col items-center">
                             {
-                                user?.photoURL ?
-                                    <img src={user?.photoURL} className='w-8 rounded-full md:mx-3 lg:hidden' alt=''></img>
+                                userInfo?.userPhoto ?
+                                    <img src={userInfo?.userPhoto} className='w-8 rounded-full md:mx-3 lg:hidden' alt=''></img>
                                     :
                                     <BsPersonFill className="text-4xl hidden md:block"></BsPersonFill>
                             }
 
-                            <span className='mx-1 hidden lg:block  font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>
+                            <span className='mx-1  font-semibold text-lg'>{user?.displayName || userInfo?.name}</span>
+                            <button  onClick={()=> navigate("/menu")} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > View Profile</button>
+                            <p>or,</p>
                             <button onClick={logOut} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
+
                         </div>
                         :
                         <div className="flex flex-col items-center">
