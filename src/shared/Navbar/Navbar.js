@@ -25,15 +25,15 @@ export default function NavBar() {
             <div className="text-white justify-between h-16 px-4 md:mx-24 mx-auto lg:max-w-7xl items-center flex md:px-8">
                 <div>
                     <div className="flex items-center">
-                        <img className=" w-16 bg-pink-300 rounded-full lg:w-16 max-w-16 " src={logo} alt="logo"></img>
+                        <img className=" w-16 bg-gradient-to-r from-pink-500 via-white to-pink-500 rounded-full lg:w-16 max-w-16 " src={logo} alt="logo"></img>
                         <p className="text-4xl text-bold hidden md:block">Trendify</p>
                     </div>
                 </div>
-                <div className="flex gap-8 lg:gap-8">
-                    <NavLink to="/"><FaHome className="text-2xl"> </FaHome></NavLink>
-                    <NavLink to="/media"><MdPermMedia className="text-2xl"></MdPermMedia></NavLink>
-                    <NavLink to="/message"><MdMessage className="text-2xl"></MdMessage></NavLink>
-                    <NavLink to="/menu"><TbListDetails className="text-2xl"></TbListDetails></NavLink>
+                <div className="flex lg:gap-8">
+                    <NavLink to="/"><FaHome className="text-2xl mx-3"> </FaHome></NavLink>
+                    <NavLink to="/media"><MdPermMedia className="text-2xl mx-3"></MdPermMedia></NavLink>
+                    <NavLink to="/message"><MdMessage className="text-2xl mx-3"></MdMessage></NavLink>
+                    <NavLink to="/menu"><TbListDetails className="text-2xl mx-3"></TbListDetails></NavLink>
 
                 </div>
                 <div className="">
@@ -46,7 +46,7 @@ export default function NavBar() {
                                 
                                 <span className='mx-1 hidden lg:block text-white font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>
                                 <button onClick={logOut} className=" hidden btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
-                                <Link to="/moreOption" className="lg:hidden"><FiMoreVertical className="ml-2" ></FiMoreVertical></Link>
+                                <Link to="/moreOption" className="lg:hidden"><FiMoreVertical className="ml-3 text-2xl" ></FiMoreVertical></Link>
                             </div>
                             :
                             <div className="flex items-center">

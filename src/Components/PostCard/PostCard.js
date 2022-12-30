@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const PostCard = ({ post }) => {
-    const { _id, userEmail, userName, userPhoto, postText, postPhoto, totalReact, likeCount, loveCount } = post;
+    const { _id, userEmail, userName, userPhoto, postText, postPhoto, totalReact, likeCount, loveCount, postingDate } = post;
 
 
     const { user, userInfo, doFetch, setDoFetch } = useContext(AuthContext)
@@ -39,7 +39,7 @@ const PostCard = ({ post }) => {
                 console.log(data);
                 // setDoFetch(true)
             })
-    }, [] )
+    }, [])
 
 
     // fetch like information /\
@@ -82,12 +82,12 @@ const PostCard = ({ post }) => {
 
 
 
-            fetch('https://trendify-server.vercel.app/posts', {
+        fetch('https://trendify-server.vercel.app/posts', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({id:_id, increase: 1})
+            body: JSON.stringify({ id: _id, increase: 1 })
         })
             .then(res => res.json())
             .then(data => {
@@ -143,13 +143,13 @@ const PostCard = ({ post }) => {
             .catch(er => console.error(er));
 
 
-            
-            fetch('https://trendify-server.vercel.app/posts', {
+
+        fetch('https://trendify-server.vercel.app/posts', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({id:_id, increase: -1})
+            body: JSON.stringify({ id: _id, increase: -1 })
         })
             .then(res => res.json())
             .then(data => {
@@ -184,9 +184,10 @@ const PostCard = ({ post }) => {
 
         const commentInfo = {
             userEmail: user?.email,
-            userName: userName,
+            userName: userInfo.name,
             postId: _id,
-            commentText: commentText
+            commentText: commentText,
+            userPhoto: userInfo?.userPhoto
         }
 
         fetch('https://trendify-server.vercel.app/comments', {
@@ -252,7 +253,7 @@ const PostCard = ({ post }) => {
     return (
         <div className=''>
             <div className="card w-screen lg:w-full bg-base-100 shadow-xl m-2 mx-auto">
-                <div className="card-body">
+                <div className="card-body pb-2">
 
                     <div className='flex items-center'>
                         {
@@ -265,7 +266,10 @@ const PostCard = ({ post }) => {
                                     <BsPersonCircle className="text-2xl "></BsPersonCircle>
                                 </>
                         }
-                        <span className='mx-1  text- font-semibold text-lg'>{userName}</span>
+                        <div>
+                            <span className='mx-1  font-semibold text-lg'>{userName}</span>
+                            <p className='mx-1 text-gray-500 text-sm' >Posted on: {postingDate}</p>
+                        </div>
                     </div>
                     <p>{postText}</p>
                 </div>
@@ -274,7 +278,7 @@ const PostCard = ({ post }) => {
                     postPhoto && <figure><img src={postPhoto} alt="Shoes" /></figure>
                 }
 
-                <div className="card-body">
+                <div className="card-body  py-2">
 
                     {
                         userInfo ?
@@ -337,14 +341,23 @@ const PostCard = ({ post }) => {
 
 
                 </div>
-                <div className="card-body">
+                <div className="card-body py-2">
                     {
                         comments && commentOpen && comments?.map(comment => <div key={comment?._id}>
                             <div className='flex items-center'>
-                                <BsPersonCircle className="text- "></BsPersonCircle>
-                                <span className='mx-1 hidden lg:block text- md:text-lg'>{comment?.userName}</span>
+                                {
+                                    comment?.userPhoto ?
+                                        <>
+                                            <img src={comment?.userPhoto} className='w-6 rounded-full md:mx-3' alt=''></img>
+                                        </>
+                                        :
+                                        <>
+                                            <BsPersonCircle className="text-2xl "></BsPersonCircle>
+                                        </>
+                                }
+                                <span className='mx-1  text- font-semibold text-lg'>{comment?.userName}</span>
                             </div>
-                            <h1 className='ml-7'>{comment?.commentText}</h1>
+                            <h1 className='ml-12 pl-2'>{comment?.commentText}</h1>
                         </div>)
                     }
                 </div>

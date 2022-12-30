@@ -9,7 +9,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 const AboutPost = () => {
     const { state } = useLocation();
 
-    const { _id, userEmail, userName, postText, postPhoto, totalReact, likeCount, loveCount } = state.post;
+    const { _id, userEmail, userName, postText, postPhoto, totalReact, likeCount, loveCount, postingDate, userPhoto } = state.post;
 
     const { user, userInfo, } = useContext(AuthContext)
     const [comments, setComments] = useState('');
@@ -58,7 +58,7 @@ const AboutPost = () => {
 
 
 
-    useEffect(()=> {
+    useEffect(() => {
 
         fetch(`https://trendify-server.vercel.app/comments?postId=${_id}`)
             .then(res => res.json())
@@ -94,16 +94,16 @@ const AboutPost = () => {
 
                     <div className='flex items-center'>
                         {
-                            state.post?.userPhoto ?
+                            userPhoto ?
                                 <>
-                                    <img src={state.post?.photoURL} className='w-8 rounded-full md:mx-3' alt=''></img>
+                                    <img src={userPhoto} className='w-12 rounded-full md:mx-3' alt=''></img>
                                 </>
                                 :
                                 <>
                                     <BsPersonCircle className="text-2xl "></BsPersonCircle>
                                 </>
                         }
-                        <span className='mx-1 hidden lg:block text- font-semibold text-xs md:text-lg'>{userName}</span>
+                        <span className='mx-1  font-semibold text-lg'>{userName}</span>
                     </div>
 
                     <div className=''>
@@ -112,6 +112,15 @@ const AboutPost = () => {
 
                     </div>
 
+                    <p className='mx-1 text-gray-700 ' >Posted on: {postingDate}</p>
+
+
+                    {/* <div>
+                        <p>Posted on :</p>
+                        <p className='mx-1 text-gray-700 ' >{postingDate}</p>
+                    </div> */}
+
+
                     <div>
                         <div className='flex items-center my-2  mx-auto'>
                             <AiFillHeart className='text-2xl text-secondary ml-2'></AiFillHeart>
@@ -119,7 +128,7 @@ const AboutPost = () => {
                         </div>
                         <div className='flex items-center my-2  mx-auto'>
                             <IoMdPaperPlane className='text-2xl text-secondary ml-2'></IoMdPaperPlane>
-                            <p className=' font-semibold ml-5'>Total : </p>
+                            <p className=' font-semibold ml-5'>Total : {comments.length} </p>
                         </div>
                     </div>
 
@@ -134,14 +143,23 @@ const AboutPost = () => {
                         <p>All Comments:</p>
 
                         {
-                        comments && comments?.map(comment => <div key={comment?._id}>
-                            <div className='flex items-center'>
-                                <BsPersonCircle className="text- "></BsPersonCircle>
-                                <span className='mx-1 hidden lg:block text- md:text-lg'>{comment?.userName}</span>
-                            </div>
-                            <h1 className='ml-7'>{comment?.commentText}</h1>
-                        </div>)
-                    } 
+                            comments && comments?.map(comment => <div key={comment?._id}>
+                                <div className='flex items-center'>
+                                    {
+                                        comment?.userPhoto ?
+                                            <>
+                                                <img src={comment?.userPhoto} className='w-6 rounded-full md:mx-3' alt=''></img>
+                                            </>
+                                            :
+                                            <>
+                                                <BsPersonCircle className="text-2xl "></BsPersonCircle>
+                                            </>
+                                    }
+                                    <span className='mx-1  text- font-semibold text-lg'>{comment?.userName}</span>
+                                </div>
+                                <h1 className='ml-12 pl-2'>{comment?.commentText}</h1>
+                            </div>)
+                        }
 
                     </div>
 
