@@ -29,7 +29,7 @@ export default function NavBar() {
                         <p className="text-4xl text-bold hidden md:block">Trendify</p>
                     </div>
                 </div>
-                <div className="flex gap-4 lg:gap-8">
+                <div className="flex gap-8 lg:gap-8">
                     <NavLink to="/"><FaHome className="text-2xl"> </FaHome></NavLink>
                     <NavLink to="/media"><MdPermMedia className="text-2xl"></MdPermMedia></NavLink>
                     <NavLink to="/message"><MdMessage className="text-2xl"></MdMessage></NavLink>

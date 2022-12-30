@@ -32,7 +32,7 @@ const AboutPost = () => {
             commentText: commentText
         }
 
-        fetch('http://localhost:5000/comments', {
+        fetch('https://trendify-server.vercel.app/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -60,7 +60,7 @@ const AboutPost = () => {
 
     useEffect(()=> {
 
-        fetch(`http://localhost:5000/comments?postId=${_id}`)
+        fetch(`https://trendify-server.vercel.app/comments?postId=${_id}`)
             .then(res => res.json())
             .then(data => {
                 setComments(data)

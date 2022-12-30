@@ -33,7 +33,7 @@ const Media = () => {
     //             likeCount: 0,
     //             postingDate:date,
     //         }
-    //         fetch('http://localhost:5000/posts', {
+    //         fetch('https://trendify-server.vercel.app/posts', {
     //             method: 'POST',
     //             headers: {
     //                 'content-type': 'application/json'
@@ -68,7 +68,7 @@ const Media = () => {
     //                         likeCount: 0,
     //                         postingDate:date,
     //                     }
-    //                     fetch('http://localhost:5000/posts', {
+    //                     fetch('https://trendify-server.vercel.app/posts', {
     //                         method: 'POST',
     //                         headers: {
     //                             'content-type': 'application/json'
@@ -96,7 +96,7 @@ const Media = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/posts/new')
+        fetch('https://trendify-server.vercel.app/posts/new')
             .then(res => res.json())
             .then(data => {
                 setPosts(data)

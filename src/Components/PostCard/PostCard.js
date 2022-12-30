@@ -30,7 +30,7 @@ const PostCard = ({ post }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/isLiked/?email=${user?.email}&postId=${_id}`)
+        fetch(`https://trendify-server.vercel.app/isLiked/?email=${user?.email}&postId=${_id}`)
             .then(res => res.json())
             .then(data => {
                 if (data?.postId === _id) {
@@ -62,7 +62,7 @@ const PostCard = ({ post }) => {
 
 
 
-        fetch('http://localhost:5000/likes', {
+        fetch('https://trendify-server.vercel.app/likes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -82,7 +82,7 @@ const PostCard = ({ post }) => {
 
 
 
-            fetch('http://localhost:5000/posts', {
+            fetch('https://trendify-server.vercel.app/posts', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -126,7 +126,7 @@ const PostCard = ({ post }) => {
             postId: _id
         }
 
-        fetch('http://localhost:5000/likes', {
+        fetch('https://trendify-server.vercel.app/likes', {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -144,7 +144,7 @@ const PostCard = ({ post }) => {
 
 
             
-            fetch('http://localhost:5000/posts', {
+            fetch('https://trendify-server.vercel.app/posts', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -189,7 +189,7 @@ const PostCard = ({ post }) => {
             commentText: commentText
         }
 
-        fetch('http://localhost:5000/comments', {
+        fetch('https://trendify-server.vercel.app/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -222,7 +222,7 @@ const PostCard = ({ post }) => {
 
         setCommentOpen(!commentOpen);
 
-        fetch(`http://localhost:5000/comments?postId=${_id}`)
+        fetch(`https://trendify-server.vercel.app/comments?postId=${_id}`)
             .then(res => res.json())
             .then(data => {
                 setComments(data)
@@ -258,14 +258,14 @@ const PostCard = ({ post }) => {
                         {
                             userPhoto ?
                                 <>
-                                    <img src={userPhoto} className='w-8 rounded-full md:mx-3' alt=''></img>
+                                    <img src={userPhoto} className='w-12 rounded-full md:mx-3' alt=''></img>
                                 </>
                                 :
                                 <>
                                     <BsPersonCircle className="text-2xl "></BsPersonCircle>
                                 </>
                         }
-                        <span className='mx-1 hidden lg:block text- font-semibold text-xs md:text-lg'>{userName}</span>
+                        <span className='mx-1  text- font-semibold text-lg'>{userName}</span>
                     </div>
                     <p>{postText}</p>
                 </div>

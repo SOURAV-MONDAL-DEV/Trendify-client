@@ -43,7 +43,7 @@ const HomeMid = () => {
 
 
 
-            fetch('http://localhost:5000/posts', {
+            fetch('https://trendify-server.vercel.app/posts', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -84,7 +84,7 @@ const HomeMid = () => {
                         }
 
 
-                        fetch('http://localhost:5000/posts', {
+                        fetch('https://trendify-server.vercel.app/posts', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -126,7 +126,7 @@ const HomeMid = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/posts/popular')
+        fetch('https://trendify-server.vercel.app/posts/popular')
             .then(res => res.json())
             .then(data => {
                 setPosts(data)

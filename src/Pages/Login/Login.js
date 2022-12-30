@@ -45,7 +45,7 @@ const Login = () => {
                     userPhoto: result?.user?.photoURL
                 }
 
-                fetch(`http://localhost:5000/users/${result?.user?.email}`, {
+                fetch(`https://trendify-server.vercel.app/users/${result?.user?.email}`, {
                             method: 'PUT',
                             headers: {
                                 'content-type': 'application/json'
