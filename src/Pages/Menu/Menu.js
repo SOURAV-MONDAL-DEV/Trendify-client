@@ -20,7 +20,15 @@ const Menu = () => {
 
     return (
         <div>
-            <h1>menu page</h1>
+            <ul className="mt-4">
+                <li className="my-2">
+                    <a href="/" className="hover:text-blue-200">Home</a>
+                </li>
+                <li className="my-2">
+                    <a href="/profile" className="hover:text-blue-200">Profile</a>
+                </li>
+                {/* Add more navigation items here */}
+            </ul>
 
         </div>
     );

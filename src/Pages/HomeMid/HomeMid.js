@@ -136,7 +136,7 @@ const HomeMid = () => {
 
 
     return (
-        <div>
+        <div >
 
             {
                 user?.uid ?
