@@ -23,11 +23,11 @@ export default function NavBar() {
 
     return (
         <nav className=" w-ful bg-secondary  sticky top-0 z-10 shadow  ">
-            <div className="text-white justify-between h-16 px-4 md:mx-24 mx-auto lg:max-w-7xl items-center flex md:px-8">
+            <div className="text-white justify-between h-16 px-4 md:mx-24 mx-auto  items-center flex md:px-8">
                 <div>
                     <div className="flex items-center">
                         <img className=" w-12 bg-gradient-to-r from-pink-500 via-yellow-400 to-pink-500 rounded-full lg:w-12 max-w-12 " src={logo2} alt="logo"></img>
-                        <p className="text-4xl text-bold hidden md:block">Trendify</p>
+                        <p className="text-4xl text-bold lg:mr-10 hidden md:block">Trendify</p>
                     </div>
                 </div>
                 <div className="flex lg:gap-8">
