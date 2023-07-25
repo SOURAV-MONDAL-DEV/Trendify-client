@@ -1,5 +1,6 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../img/Fire-Logo.png"
+import logo2 from "../../img/Fire-Logo2.png"
 import { FaHome } from 'react-icons/fa';
 import { MdPermMedia } from 'react-icons/md';
 import { MdMessage } from 'react-icons/md';
@@ -25,7 +26,7 @@ export default function NavBar() {
             <div className="text-white justify-between h-16 px-4 md:mx-24 mx-auto lg:max-w-7xl items-center flex md:px-8">
                 <div>
                     <div className="flex items-center">
-                        <img className=" w-16 bg-gradient-to-r from-pink-500 via-white to-pink-500 rounded-full lg:w-16 max-w-16 " src={logo} alt="logo"></img>
+                        <img className=" w-12 bg-gradient-to-r from-pink-500 via-yellow-400 to-pink-500 rounded-full lg:w-12 max-w-12 " src={logo2} alt="logo"></img>
                         <p className="text-4xl text-bold hidden md:block">Trendify</p>
                     </div>
                 </div>
