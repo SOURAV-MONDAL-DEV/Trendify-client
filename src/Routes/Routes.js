@@ -10,6 +10,7 @@ import Menu from "../Pages/Menu/Menu";
 import Message from "../Pages/Message/Message";
 import MoreOption from "../Pages/MoreOption/MoreOption";
 import SignUp from "../Pages/SignUp/SignUp";
+import ProfilePage from "../Pages/ProfilePage/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
           {
             path: '/menu',
             element: <Menu></Menu>
+          },
+          {
+            path: '/profilepage',
+            element: <ProfilePage></ProfilePage>
           },
           {
             path: '/aboutPost',

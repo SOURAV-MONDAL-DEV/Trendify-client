@@ -33,7 +33,7 @@ const MoreOption = () => {
                             }
 
                             <span className='mx-1  font-semibold text-lg'>{user?.displayName || userInfo?.name}</span>
-                            <button  onClick={()=> navigate("/menu")} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > View Profile</button>
+                            <button  onClick={()=> navigate("/profilepage")} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > View Profile</button>
                             <p>or,</p>
                             <button onClick={logOut} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
 

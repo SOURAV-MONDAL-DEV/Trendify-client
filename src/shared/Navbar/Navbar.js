@@ -34,7 +34,7 @@ export default function NavBar() {
                     <NavLink to="/"><FaHome className="text-2xl mx-3"> </FaHome></NavLink>
                     <NavLink to="/media"><MdPermMedia className="text-2xl mx-3"></MdPermMedia></NavLink>
                     <NavLink to="/message"><MdMessage className="text-2xl mx-3"></MdMessage></NavLink>
-                    <NavLink to="/menu"><TbListDetails className="text-2xl mx-3"></TbListDetails></NavLink>
+                    <NavLink to="/menu"><TbListDetails className="text-2xl mx-3 lg:hidden"></TbListDetails></NavLink>
 
                 </div>
                 <div className="">
@@ -42,7 +42,7 @@ export default function NavBar() {
                         user?.uid ?
                             <div className="flex items-center">
                                 {
-                                    userInfo?.userPhoto && <img onClick={() => navigate("/menu") } src={userInfo?.userPhoto} className='w-8 rounded-full md:mx-3' alt=''></img>
+                                    userInfo?.userPhoto && <img onClick={() => navigate("/profilepage") } src={userInfo?.userPhoto} className='w-8 rounded-full md:mx-3' alt=''></img>
                                 }
                                 
                                 <span className='mx-1 hidden lg:block text-white font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>
