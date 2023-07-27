@@ -8,27 +8,43 @@ import { MdLocationOn } from 'react-icons/md';
 import { MdEmail } from 'react-icons/md';
 import { FaRegEdit } from "react-icons/fa";
 import { GrMailOption } from "react-icons/gr";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import person from "../../img/person.png";
+import { BsPersonPlusFill } from 'react-icons/bs';
+import { FaFacebookMessenger } from 'react-icons/fa';
 
 
 const Menu = () => {
 
-    const { userInfo } = useContext(AuthContext);
+    const { user, logOut, userInfo } = useContext(AuthContext);
+    const navigate = useNavigate();
     const { _id, email, name, userPhoto, work, address, college, } = userInfo;
 
 
     return (
-        <div>
-            <ul className="mt-4">
-                <li className="my-2">
-                    <a href="/" className="hover:text-blue-200">Home</a>
-                </li>
-                <li className="my-2">
-                    <a href="/profile" className="hover:text-blue-200">Profile</a>
-                </li>
-                {/* Add more navigation items here */}
-            </ul>
+        <div className='mt-8 ml-4'>
+
+
+            {
+            user?.uid ?
+                <div className="flex items-center gap-3">
+                    {
+                        userInfo?.userPhoto && <img onClick={() => navigate("/profilepage")} src={userInfo?.userPhoto} className='w-8 rounded-full' alt=''></img>
+                    }
+                    <span className=' font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>
+                </div>
+                :
+                <div className="flex items-center">
+                    <BsPersonPlusFill className="text-4xl "></BsPersonPlusFill>
+                </div>
+            }
+
+            <div className="flex items-center gap-3 mt-4">
+                <FaFacebookMessenger className='text-3xl text-secondary' />
+                <p className=' font-semibold text-xs md:text-lg'>Messages</p>
+            </div>
+
+
 
         </div>
     );
