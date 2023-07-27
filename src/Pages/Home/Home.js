@@ -5,7 +5,7 @@ import MoreOption from '../MoreOption/MoreOption';
 
 const Home = () => {
     return (
-        <div className='lg:flex bg-gray-200 pt-16'>
+        <div className='lg:flex bg-gray-100 pt-16'>
             <div className='hidden lg:block basis-3/12 '>
                 <Menu></Menu>
             </div>
