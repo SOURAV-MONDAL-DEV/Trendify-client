@@ -5,6 +5,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { TbListDetails } from 'react-icons/tb';
 import { AiOutlineRight } from 'react-icons/ai';
 import { IoMdSettings } from 'react-icons/io';
+import cover from '../../img/cover.jpg'
 
 const MoreOption = () => {
 
@@ -19,10 +20,17 @@ const MoreOption = () => {
     return (
         <div className=' min-h-screen pt-4 ml-4'>
 
-            
 
-            
-            <div className="">
+
+            <div className="cover-container w-full relative">
+                <img className="cover-image w-full h-48 object-cover rounded-lg" src={cover} />
+                <img className="profile-picture w-24 h-24 rounded-full bg-blue-400 absolute left-1/2 transform translate-x-[-50%] translate-y-[-50%] " src={userInfo?.userPhoto} />
+            </div>
+
+
+
+
+            <div className="mt-20">
                 {
                     user?.uid ?
                         <div className="flex flex-col items-center">
@@ -48,17 +56,17 @@ const MoreOption = () => {
             </div>
 
 
-            
+
             <div className="flex items-center gap-3 mt-4">
                 <IoMdSettings className='text-3xl text-secondary' />
                 <p className=' font-semibold md:text-lg'>Settings</p>
-                <AiOutlineRight></AiOutlineRight> 
+                <AiOutlineRight></AiOutlineRight>
             </div>
 
             <div className="flex items-center gap-3 mt-4">
                 <TbListDetails className='text-3xl text-secondary' />
                 <p className=' font-semibold md:text-lg'>More Options</p>
-                <AiOutlineRight></AiOutlineRight> 
+                <AiOutlineRight></AiOutlineRight>
             </div>
 
         </div>
