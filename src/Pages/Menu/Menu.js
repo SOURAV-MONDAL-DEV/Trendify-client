@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-import { BsFillHouseDoorFill } from 'react-icons/bs';
+import { BsFillHouseDoorFill, BsSearch } from 'react-icons/bs';
 import { BsFillBriefcaseFill } from 'react-icons/bs';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { IoMdSchool } from 'react-icons/io';
@@ -28,20 +28,25 @@ const Menu = () => {
 
 
     return (
-        <div>
+        <div className=' min-h-screen'>
             <BackButton></BackButton>
             <div className='mt-4 ml-4'>
 
+                <div className='flex items-center gap-3 mt-4'>
+                    <input type="text" placeholder="Search tredify" className="p-2 w-full border border-secondary lg:w-48 max-w-xs " />
+                    <BsSearch className='text-2xl text-secondary'></BsSearch>
+                </div>
+
                 {
                     user?.uid ?
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3 mt-4">
                             {
                                 userInfo?.userPhoto && <img onClick={() => navigate("/profilepage")} src={userInfo?.userPhoto} className='w-8 rounded-full' alt=''></img>
                             }
                             <span className=' font-semibold  md:text-lg'>{user?.displayName || userInfo?.name}</span>
                         </div>
                         :
-                        <div className="flex items-center">
+                        <div className="flex items-center mt-4">
                             <BsPersonPlusFill className="text-4xl "></BsPersonPlusFill>
                         </div>
                 }

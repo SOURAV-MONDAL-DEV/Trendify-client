@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import { BsPersonFill, BsPersonPlusFill, BsSearch } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { TbListDetails } from 'react-icons/tb';
+import { AiOutlineRight } from 'react-icons/ai';
+import { IoMdSettings } from 'react-icons/io';
 
 const MoreOption = () => {
 
@@ -14,13 +17,11 @@ const MoreOption = () => {
 
 
     return (
-        <div>
-            <p className='m-5 text-xl font-bold'>More option</p>
+        <div className=' min-h-screen pt-4 ml-4'>
 
-            <div className='flex items-center my-2  mx-auto'>
-                <input type="text" placeholder="Search tredify" className="input input-bordered input-success w-full lg:w-48 max-w-xs m-5" />
-                <BsSearch></BsSearch>
-            </div>
+            
+
+            
             <div className="">
                 {
                     user?.uid ?
@@ -33,7 +34,7 @@ const MoreOption = () => {
                             }
 
                             <span className='mx-1  font-semibold text-lg'>{user?.displayName || userInfo?.name}</span>
-                            <button  onClick={()=> navigate("/profilepage")} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > View Profile</button>
+                            <button onClick={() => navigate("/profilepage")} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > View Profile</button>
                             <p>or,</p>
                             <button onClick={logOut} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
 
@@ -45,6 +46,21 @@ const MoreOption = () => {
                         </div>
                 }
             </div>
+
+
+            
+            <div className="flex items-center gap-3 mt-4">
+                <IoMdSettings className='text-3xl text-secondary' />
+                <p className=' font-semibold md:text-lg'>Settings</p>
+                <AiOutlineRight></AiOutlineRight> 
+            </div>
+
+            <div className="flex items-center gap-3 mt-4">
+                <TbListDetails className='text-3xl text-secondary' />
+                <p className=' font-semibold md:text-lg'>More Options</p>
+                <AiOutlineRight></AiOutlineRight> 
+            </div>
+
         </div>
     );
 };

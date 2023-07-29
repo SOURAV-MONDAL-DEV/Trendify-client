@@ -10,6 +10,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { GrMailOption } from "react-icons/gr";
 import { Link } from 'react-router-dom';
 import person from "../../img/person.png";
+import ProfileCard from '../../Components/ProfileCard/ProfileCard';
 
 
 const ProfilePage = () => {
@@ -20,6 +21,7 @@ const ProfilePage = () => {
 
     return (
         <div>
+            <ProfileCard></ProfileCard>
             <div className='flex flex-row'>
                 <div className='basis-5/6 flex flex-col items-center my-5'>
                     {

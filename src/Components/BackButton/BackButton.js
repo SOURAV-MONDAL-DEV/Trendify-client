@@ -9,7 +9,7 @@ const BackButton = () => {
   };
 
   return (
-    <p className='mx-5 my-2 flex items-center bg-pink-200 rounded-md max-w-fit px-2' onClick={handleGoBack}>
+    <p className='mx-5 my-4 flex items-center bg-pink-200 rounded-md max-w-fit px-2' onClick={handleGoBack}>
       <span style={{
         transform: 'scaleX(-1)',
         display: 'inline-block',

@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { FiMoreVertical } from "react-icons/fi";
 import { TbListDetails } from "react-icons/tb";
+import SearchBox from "../../Components/SearchBox/SearchBox";
 
 export default function NavBar() {
 
@@ -35,7 +36,7 @@ export default function NavBar() {
                     <NavLink to="/media"><MdPermMedia className="text-2xl mx-3"></MdPermMedia></NavLink>
                     <NavLink to="/message"><MdMessage className="text-2xl mx-3"></MdMessage></NavLink>
                     <NavLink to="/menu"><TbListDetails className="text-2xl mx-3 lg:hidden"></TbListDetails></NavLink>
-
+                    
                 </div>
                 <div className="">
                     {
