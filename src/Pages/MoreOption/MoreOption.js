@@ -33,9 +33,9 @@ const MoreOption = () => {
                     user?.uid ?
                         <div className="flex flex-col items-center">
                             <span className='mx-1  font-semibold text-lg'>{user?.displayName || userInfo?.name}</span>
-                            <button onClick={() => navigate("/profilepage")} className=" rounded-md px-3 py-2 text-xs bg-secondary text-white md:mx-3 hover:bg-purple-600" > View Profile</button>
+                            <button onClick={() => navigate("/profilepage")} className=" rounded-md px-3 py-2 text-sm bg-secondary text-white md:mx-3 hover:bg-purple-600" > View Profile</button>
                             <p>or,</p>
-                            <button onClick={logOut} className=" rounded-md px-3 py-2 text-xs bg-secondary text-white md:mx-3 hover:bg-purple-600" > Log out</button>
+                            <button onClick={logOut} className=" rounded-md px-3 py-2 text-sm bg-secondary text-white md:mx-3 hover:bg-purple-600" > Log out</button>
 
                         </div>
                         :

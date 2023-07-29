@@ -51,10 +51,10 @@ const Menu = () => {
                         </div>
                 } */}
 
-                <div className="flex items-center gap-3 mt-4">
+                {/* <div className="flex items-center gap-3 mt-4">
                     <FaEdit className='text-3xl text-secondary' />
                     <p className=' font-semibold  md:text-lg'>Write a post</p>
-                </div>
+                </div> */}
                 <div className="flex items-center gap-3 mt-4">
                     <BiNews className='text-3xl text-secondary' />
                     <p className=' font-semibold  md:text-lg'>NewsFeed</p>
