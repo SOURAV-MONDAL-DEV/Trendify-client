@@ -18,33 +18,24 @@ const MoreOption = () => {
 
 
     return (
-        <div className=' min-h-screen pt-4 ml-4'>
+        <div className=' min-h-screen pt-4'>
 
-
-
-            <div className="cover-container w-full relative">
-                <img className="cover-image w-full h-48 object-cover rounded-lg" src={cover} />
-                <img className="profile-picture w-24 h-24 rounded-full bg-blue-400 absolute left-1/2 transform translate-x-[-50%] translate-y-[-50%] " src={userInfo?.userPhoto} />
+            <div className="cover-container w-full relative mx-auto">
+                <img className="mx-auto w-full h-36 md:h-48 lg:h-36 object-cover " src={cover} />
+                <img className=" w-24 h-24 rounded-full bg-blue-400 border-2 border-secondary absolute left-1/2 transform translate-x-[-50%] translate-y-[-50%] " src={userInfo?.userPhoto} />
             </div>
 
 
 
 
-            <div className="mt-20">
+            <div className="mt-14 ">
                 {
                     user?.uid ?
                         <div className="flex flex-col items-center">
-                            {
-                                userInfo?.userPhoto ?
-                                    <img src={userInfo?.userPhoto} className='w-8 rounded-full md:mx-3 lg:hidden' alt=''></img>
-                                    :
-                                    <BsPersonFill className="text-4xl hidden md:block"></BsPersonFill>
-                            }
-
                             <span className='mx-1  font-semibold text-lg'>{user?.displayName || userInfo?.name}</span>
-                            <button onClick={() => navigate("/profilepage")} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > View Profile</button>
+                            <button onClick={() => navigate("/profilepage")} className=" rounded-md px-3 py-2 text-xs bg-secondary text-white md:mx-3 hover:bg-purple-600" > View Profile</button>
                             <p>or,</p>
-                            <button onClick={logOut} className="btn btn-outline btn-xs rounded-md p-1 text-xs text-blue-800 md:mx-3" > Log out</button>
+                            <button onClick={logOut} className=" rounded-md px-3 py-2 text-xs bg-secondary text-white md:mx-3 hover:bg-purple-600" > Log out</button>
 
                         </div>
                         :
@@ -57,16 +48,18 @@ const MoreOption = () => {
 
 
 
-            <div className="flex items-center gap-3 mt-4">
-                <IoMdSettings className='text-3xl text-secondary' />
-                <p className=' font-semibold md:text-lg'>Settings</p>
-                <AiOutlineRight></AiOutlineRight>
-            </div>
+            <div className='mx-4'>
+                <div className="flex items-center gap-3 mt-4">
+                    <IoMdSettings className='text-3xl text-secondary' />
+                    <p className=' font-semibold md:text-lg'>Settings</p>
+                    <AiOutlineRight></AiOutlineRight>
+                </div>
 
-            <div className="flex items-center gap-3 mt-4">
-                <TbListDetails className='text-3xl text-secondary' />
-                <p className=' font-semibold md:text-lg'>More Options</p>
-                <AiOutlineRight></AiOutlineRight>
+                <div className="flex items-center gap-3 mt-4">
+                    <TbListDetails className='text-3xl text-secondary' />
+                    <p className=' font-semibold md:text-lg'>More Options</p>
+                    <AiOutlineRight></AiOutlineRight>
+                </div>
             </div>
 
         </div>

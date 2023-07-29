@@ -37,7 +37,7 @@ const Menu = () => {
                     <BsSearch className='text-2xl text-secondary'></BsSearch>
                 </div>
 
-                {
+                {/* {
                     user?.uid ?
                         <div className="flex items-center gap-3 mt-4">
                             {
@@ -49,7 +49,7 @@ const Menu = () => {
                         <div className="flex items-center mt-4">
                             <BsPersonPlusFill className="text-4xl "></BsPersonPlusFill>
                         </div>
-                }
+                } */}
 
                 <div className="flex items-center gap-3 mt-4">
                     <FaEdit className='text-3xl text-secondary' />
