@@ -35,7 +35,7 @@ const ProfilePage = () => {
             src={userInfo?.userPhoto}
           />
 
-          <div className=" -mt-16 pb-20">
+          <div className=" -mt-20 pb-10">
             <div className="flex justify-end mx-6 my-3">
               <Link className="w-fit mr-0" to="/editUser">
                 <FaRegEdit className="text-secondary text-2xl"></FaRegEdit>
@@ -45,7 +45,14 @@ const ProfilePage = () => {
               <p className="text-xl font-bold">{name}</p>
             </div>
 
-            <div className=" flex items-center justify-center md:justify-evenly gap-5 md:gap-10 flex-wrap my-5 md:mx-10">
+            <div className=" flex flex-wrap items-center justify-center mt-1 mb-6">
+
+              <div style={{fontFamily: " serif"}} className="flex items-center mx-2 text-gray-700 text- " > <MdLocationOn className=" mr-1 text-gray-500"></MdLocationOn> Pirojpur, BD</div>
+              <div style={{fontFamily: " serif"}} className="flex items-center mx-2 text-gray-700 text- " > <BsFillBriefcaseFill className=" mr-1 text-gray-500"></BsFillBriefcaseFill>Founder, Trendify</div>
+
+            </div>
+
+            <div className=" flex items-center justify-center  gap-5 md:gap-10 flex-wrap my-3 md:mx-10">
               <div className="flex flex-col items-center justify-center ">
                 <h3 className="text-20 font-bold">4</h3>
                 <p>Posts</p>
@@ -60,7 +67,7 @@ const ProfilePage = () => {
               </div>
             </div>
 
-            <div className=" flex items-center justify-center gap-6  mb-8">
+            <div className=" flex items-center justify-center gap-6  mb-5">
 
               <button className=" text-white px-4 py-[6px] flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-lime-500 brightness-110" > <MdPersonAddAlt className=" mr-1"></MdPersonAddAlt> Follow</button>
               <button className=" text-white px-4 py-[6px] flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-lime-500 brightness-110" > <FaTelegramPlane className=" mr-1"></FaTelegramPlane> Messege</button>
