@@ -42,8 +42,21 @@ const ProfilePage = () => {
               <p className="text-xl font-bold">{name}</p>
             </div>
 
+            <div className=" flex items-center justify-evenly gap-14 flex-wrap m-10">
+              <div className="flex flex-col items-center justify-center ">
+                <h3 className="text-20 font-bold">4</h3>
+                <p>Posts</p>
+              </div>
+              <div className="flex flex-col items-center justify-center ">
+                <h3 className="text-20 font-bold">15.8 K</h3>
+                <p>Followers</p>
+              </div>
+              <div className="flex flex-col items-center justify-center ">
+                <h3 className="text-20 font-bold">60</h3>
+                <p>Following</p>
+              </div>
+            </div>
           </div>
-
         </div>
         {/* <div className=" absolute top-0 left-0">
             <BackButton></BackButton>
