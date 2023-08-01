@@ -8,6 +8,8 @@ import { MdLocationOn } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import { GrMailOption } from "react-icons/gr";
+import { MdPersonAddAlt } from "react-icons/md";
+import { FaTelegramPlane } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import person from "../../img/person.png";
 import ProfileCard from "../../Components/ProfileCard/ProfileCard";
@@ -56,6 +58,13 @@ const ProfilePage = () => {
                 <h3 className="text-20 font-bold">60</h3>
                 <p>Following</p>
               </div>
+            </div>
+
+            <div className=" flex items-center justify-center gap-6  mb-8">
+
+              <button className=" text-white px-4 py-[6px] flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-lime-500 brightness-110" > <MdPersonAddAlt className=" mr-1"></MdPersonAddAlt> Follow</button>
+              <button className=" text-white px-4 py-[6px] flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-lime-500 brightness-110" > <FaTelegramPlane className=" mr-1"></FaTelegramPlane> Messege</button>
+
             </div>
 
             <ContactLinks></ContactLinks>
