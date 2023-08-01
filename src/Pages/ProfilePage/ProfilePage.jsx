@@ -47,8 +47,8 @@ const ProfilePage = () => {
 
             <div className=" flex flex-wrap items-center justify-center mt-1 mb-6">
 
-              <div style={{fontFamily: " serif"}} className="flex items-center mx-2 text-gray-700 text- " > <MdLocationOn className=" mr-1 text-gray-500"></MdLocationOn> Pirojpur, BD</div>
-              <div style={{fontFamily: " serif"}} className="flex items-center mx-2 text-gray-700 text- " > <BsFillBriefcaseFill className=" mr-1 text-gray-500"></BsFillBriefcaseFill>Founder, Trendify</div>
+              <div style={{fontFamily: " serif"}} className="flex items-center mx-2 text-gray-700 text- " > <MdLocationOn className=" mr-1 text-gray-500"></MdLocationOn> {address}</div>
+              <div style={{fontFamily: " serif"}} className="flex items-center mx-2 text-gray-700 text- " > <BsFillBriefcaseFill className=" mr-1 text-gray-500"></BsFillBriefcaseFill>{work}</div>
 
             </div>
 
