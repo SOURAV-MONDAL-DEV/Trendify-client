@@ -7,7 +7,7 @@ import NavBar from './shared/Navbar/Navbar';
 
 function App() {
   return (
-    <div className="">
+    <div className="myfont">
       <RouterProvider router={router} ></RouterProvider>
       <Toaster></Toaster>
     </div>

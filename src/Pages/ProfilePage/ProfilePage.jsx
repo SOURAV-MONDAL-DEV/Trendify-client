@@ -13,6 +13,7 @@ import person from "../../img/person.png";
 import ProfileCard from "../../Components/ProfileCard/ProfileCard";
 import cover from "../../img/cover.jpg";
 import BackButton from "../../Components/BackButton/BackButton";
+import ContactLinks from "../../Components/ContactLinks/ContactLinks";
 
 const ProfilePage = () => {
   const { userInfo } = useContext(AuthContext);
@@ -42,7 +43,7 @@ const ProfilePage = () => {
               <p className="text-xl font-bold">{name}</p>
             </div>
 
-            <div className=" flex items-center justify-evenly gap-14 flex-wrap m-10">
+            <div className=" flex items-center justify-center md:justify-evenly gap-5 md:gap-10 flex-wrap my-5 md:mx-10">
               <div className="flex flex-col items-center justify-center ">
                 <h3 className="text-20 font-bold">4</h3>
                 <p>Posts</p>
@@ -56,6 +57,8 @@ const ProfilePage = () => {
                 <p>Following</p>
               </div>
             </div>
+
+            <ContactLinks></ContactLinks>
           </div>
         </div>
         {/* <div className=" absolute top-0 left-0">
