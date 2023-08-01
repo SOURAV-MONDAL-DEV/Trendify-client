@@ -12,32 +12,42 @@ import { Link } from "react-router-dom";
 import person from "../../img/person.png";
 import ProfileCard from "../../Components/ProfileCard/ProfileCard";
 import cover from "../../img/cover.jpg";
+import BackButton from "../../Components/BackButton/BackButton";
 
 const ProfilePage = () => {
   const { userInfo } = useContext(AuthContext);
+
   const { _id, email, name, userPhoto, work, address, college } = userInfo;
 
   return (
     <div>
       <div className="cover-container w-full relative mx-auto">
         <img
-          className="mx-auto w-full h-36 md:h-48 lg:h-36 object-cover "
+          className="mx-auto w-full h-48 md:h-48 lg:h-48 object-cover "
           src={cover}
         />
-        <img
-          className=" w-24 h-24 rounded-full bg-blue-400 border-2 border-secondary absolute left-1/2 transform translate-x-[-50%] translate-y-[-50%] "
-          src={userInfo?.userPhoto}
-        />
-      </div>
+        <div className=" w-auto  rounded-lg bg-gray-200  mx-5 translate-y-[-50px] ">
+          <img
+            className=" w-24 h-24 rounded-md bg-cyan-300 border-2 border-white mx-auto translate-y-[-50%] "
+            src={userInfo?.userPhoto}
+          />
 
-      <div className="flex justify-end mx-6 my-3">
-        <Link className="w-fit mr-0" to="/editUser">
-          <FaRegEdit className="text-secondary text-2xl"></FaRegEdit>
-        </Link>
-      </div>
+          <div className=" -mt-16 pb-20">
+            <div className="flex justify-end mx-6 my-3">
+              <Link className="w-fit mr-0" to="/editUser">
+                <FaRegEdit className="text-secondary text-2xl"></FaRegEdit>
+              </Link>
+            </div>
+            <div className="flex flex-col  items-center justify-center">
+              <p className="text-xl font-bold">{name}</p>
+            </div>
 
-      <div className="flex flex-col mt-6 items-center justify-center">
-        <p className="text-2xl font-bold">{name}</p>
+          </div>
+
+        </div>
+        {/* <div className=" absolute top-0 left-0">
+            <BackButton></BackButton>
+        </div> */}
       </div>
 
       {/* <div className='flex flex-row'>
