@@ -16,11 +16,16 @@ import ProfileCard from "../../Components/ProfileCard/ProfileCard";
 import cover from "../../img/cover.jpg";
 import BackButton from "../../Components/BackButton/BackButton";
 import ContactLinks from "../../Components/ContactLinks/ContactLinks";
+import PostCard from "../../Components/PostCard/PostCard";
 
 const ProfilePage = () => {
   const { userInfo } = useContext(AuthContext);
-
   const { _id, email, name, userPhoto, work, address, college } = userInfo;
+
+
+  const posts = [{"_id":"63ae5bbff5aba09be67b6156","userEmail":"souravmondalcode@gmail.com","userName":"SOURAV MONDAL","userPhoto":"https://lh3.googleusercontent.com/a/AEdFTp65LYwqFSFJjFpZyntgH8O7eODAloOuogWgRCTY=s96-c","postText":"একই ফ্রেমে বর্তমান ও ভবিষ্যৎ।\nবেকুটিয়া সেতু, পিরোজপুর। ","postPhoto":"https://i.ibb.co/GnHdxvW/20221230-001321.jpg","likeCount":8,"postingDate":"2022-12-30"},{"_id":"63add956dbbedde6d021c97d","userEmail":"souravmondal1315@gmail.com","postText":"Today's captured. ","postPhoto":"https://i.ibb.co/9tV43qg/20221230-001207.jpg","likeCount":5,"postingDate":"2022-12-30","userPhoto":"https://lh3.googleusercontent.com/a/AEdFTp65LYwqFSFJjFpZyntgH8O7eODAloOuogWgRCTY=s96-c","userName":"SOURAV MONDAL"},{"_id":"63af1ae8b81ae6d3b2675afd","userEmail":"sa@kib.com","userName":"Sakib Shekh","userPhoto":"https://i.ibb.co/pv47VHn/messi.png","postText":"My imagination destination 💚","postPhoto":"https://i.ibb.co/TWHZ8Lx/ggg.jpg","likeCount":4,"postingDate":"2022-12-30"}]
+
+
 
   return (
     <div>
@@ -45,11 +50,23 @@ const ProfilePage = () => {
               <p className="text-xl font-bold">{name}</p>
             </div>
 
-            <div className=" flex flex-wrap items-center justify-center mt-1 mb-6">
-
-              <div style={{fontFamily: " serif"}} className="flex items-center mx-2 text-gray-700 text- " > <MdLocationOn className=" mr-1 text-gray-500"></MdLocationOn> {address}</div>
-              <div style={{fontFamily: " serif"}} className="flex items-center mx-2 text-gray-700 text- " > <BsFillBriefcaseFill className=" mr-1 text-gray-500"></BsFillBriefcaseFill>{work}</div>
-
+            <div className=" flex flex-wrap items-center justify-center mt-1 mb-4">
+              <div
+                style={{ fontFamily: " serif" }}
+                className="flex items-center mx-2 text-gray-700 text- "
+              >
+                {" "}
+                <MdLocationOn className=" mr-1 text-gray-500"></MdLocationOn>{" "}
+                {address}
+              </div>
+              <div
+                style={{ fontFamily: " serif" }}
+                className="flex items-center mx-2 text-gray-700 text- "
+              >
+                {" "}
+                <BsFillBriefcaseFill className=" mr-1 text-gray-500"></BsFillBriefcaseFill>
+                {work}
+              </div>
             </div>
 
             <div className=" flex items-center justify-center  gap-5 md:gap-10 flex-wrap my-3 md:mx-10">
@@ -68,10 +85,14 @@ const ProfilePage = () => {
             </div>
 
             <div className=" flex items-center justify-center gap-6  mb-5">
-
-              <button className=" text-white px-4 py-[6px] flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-lime-500 brightness-110" > <MdPersonAddAlt className=" mr-1"></MdPersonAddAlt> Follow</button>
-              <button className=" text-white px-4 py-[6px] flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-lime-500 brightness-110" > <FaTelegramPlane className=" mr-1"></FaTelegramPlane> Messege</button>
-
+              <button className=" text-white px-4 py-[6px] flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-lime-500 brightness-110">
+                {" "}
+                <MdPersonAddAlt className=" mr-1"></MdPersonAddAlt> Follow
+              </button>
+              <button className=" text-white px-4 py-[6px] flex items-center rounded-lg bg-gradient-to-r from-cyan-500 to-lime-500 brightness-110">
+                {" "}
+                <FaTelegramPlane className=" mr-1"></FaTelegramPlane> Messege
+              </button>
             </div>
 
             <ContactLinks></ContactLinks>
@@ -82,15 +103,17 @@ const ProfilePage = () => {
         </div> */}
       </div>
 
-      {/* <div className='flex flex-row'>
-                <div className='basis-5/6 flex flex-col items-center my-5'>
-        
-                    <p className='text-2xl font-bold'>{name}</p>
-                    <p className=' font-semibold text-gray-500'>New profile page</p>
-                    <p className=' font-semibold text-gray-500'>No Friends yet</p>
-                </div>
-                <Link to="/editUser" ><FaRegEdit className='basis-1/6 mt-10 text-secondary text-2xl'></FaRegEdit></Link>
-            </div> */}
+      <div className="">
+        {posts.map((post) => (
+          <PostCard
+            key={post._id}
+            post={post}
+            // doFetch={doFetch}
+            // setDoFetch={setDoFetch}
+          ></PostCard>
+        ))}
+      </div>
+
       <div className="m-8 lg:">
         <div className="flex items-center my-2  mx-auto">
           <MdEmail className="inline text-2xl text-gray-500"></MdEmail>
