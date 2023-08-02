@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { BsPersonCircle } from 'react-icons/bs';
 import { AiOutlineLike } from 'react-icons/ai';
 import { AiFillLike } from 'react-icons/ai';
@@ -6,6 +6,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { IoMdPaperPlane } from 'react-icons/io';
 import { FiMoreHorizontal } from 'react-icons/fi';
+import { GrMoreVertical } from 'react-icons/gr';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -246,6 +247,30 @@ const PostCard = ({ post }) => {
 
 
 
+    // open option--\/
+    const [newStatus, setNewStatus] = useState("Available")
+    const [isStOpen, setIsStOpen] = useState(false)
+    const divRef = useRef(null);
+    const handleStatusClick = (st) => {
+        setNewStatus(st);
+        setIsStOpen(false)
+    }
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (divRef.current && !divRef.current.contains(event.target)) {
+                setIsStOpen(false)
+            }
+        };
+        document.addEventListener('click', handleOutsideClick);
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
+    //open option--/\
+
+
+
+
 
 
 
@@ -253,22 +278,36 @@ const PostCard = ({ post }) => {
         <div className=''>
             <div className="card w-screen lg:w-full bg-base-100 shadow-xl m-2 mx-auto">
                 <div className="card-body pb-2">
-
-                    <div className='flex items-center'>
-                        {
-                            userPhoto ?
-                                <>
-                                    <img src={userPhoto} className='w-12 rounded-full md:mx-3' alt=''></img>
-                                </>
-                                :
-                                <>
-                                    <BsPersonCircle className="text-2xl "></BsPersonCircle>
-                                </>
-                        }
-                        <div>
-                            <span className='mx-1  font-semibold text-lg'>{userName}</span>
-                            <p className='mx-1 text-gray-500 text-sm' >Posted on: {postingDate}</p>
+                    <div className='flex justify-between'>
+                        <div className='flex items-center'>
+                            {
+                                userPhoto ?
+                                    <>
+                                        <img src={userPhoto} className='w-12 rounded-full md:mx-3' alt=''></img>
+                                    </>
+                                    :
+                                    <>
+                                        <BsPersonCircle className="text-2xl "></BsPersonCircle>
+                                    </>
+                            }
+                            <div>
+                                <span className='mx-1  font-semibold text-lg'>{userName}</span>
+                                <p className='mx-1 text-gray-500 text-sm' >Posted on: {postingDate}</p>
+                            </div>
                         </div>
+
+
+                        <div   ref={divRef}  className='mt-2 relative'>
+                            {
+                                isStOpen && <div className=' absolute top-0 right-6 border-[1px] border-gray-500 px-4 py-2 backdrop-blur-[2px] bg-white shadow-lg'>
+                                    <p>Save</p>
+                                    <p>Delete</p>
+                                </div>
+                            }
+                            <GrMoreVertical  onClick={()=>setIsStOpen(!isStOpen)} ></GrMoreVertical>
+                        </div>
+
+
                     </div>
                     <p>{postText}</p>
                 </div>
