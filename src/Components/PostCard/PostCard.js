@@ -403,7 +403,7 @@ const PostCard = ({ post }) => {
                                 }
                                 <span className='mx-1  text- font-semibold text-lg'>{comment?.userName}</span>
                             </div>
-                            <h1 className='ml-12 pl-2'>{comment?.commentText}</h1>
+                            <h1 className='ml-6 pl-2'>{comment?.commentText}</h1>
                         </div>)
                     }
                 </div>
