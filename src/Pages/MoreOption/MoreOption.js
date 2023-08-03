@@ -22,7 +22,7 @@ const MoreOption = () => {
 
             <div className="cover-container w-full relative mx-auto">
                 <img className="mx-auto w-full h-36 md:h-48 lg:h-36 object-cover " src={cover} />
-                <img className=" w-24 h-24 rounded-full bg-blue-400 border-2 border-secondary absolute left-1/2 transform translate-x-[-50%] translate-y-[-50%] " src={userInfo?.userPhoto} />
+                <img className=" w-24 h-24 object-cover rounded-full bg-blue-400 border-2 border-secondary absolute left-1/2 transform translate-x-[-50%] translate-y-[-50%] " src={userInfo?.userPhoto} />
             </div>
 
 

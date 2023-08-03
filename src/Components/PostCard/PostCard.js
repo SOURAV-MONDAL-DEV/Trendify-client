@@ -35,7 +35,7 @@ const PostCard = ({ post }) => {
 
 
     useEffect(() => {
-        fetch(`https://trendify-server.vercel.app/isLiked/?email=${user?.email}&postId=${_id}`)
+        user?.email && fetch(`https://trendify-server.vercel.app/isLiked/?email=${user?.email}&postId=${_id}`)
             .then(res => res.json())
             .then(data => {
                 if (data?.postId === _id) {
@@ -274,6 +274,7 @@ const PostCard = ({ post }) => {
 
 
 
+    // console.log(userPhoto)
 
 
 
@@ -287,7 +288,7 @@ const PostCard = ({ post }) => {
                             {
                                 userPhoto ?
                                     <>
-                                        <img src={userPhoto} className='w-12 rounded-full md:mx-3' alt=''></img>
+                                        <img src={userPhoto} className='w-12 h-12 object-cover rounded-full md:mx-3' alt=''></img>
                                     </>
                                     :
                                     <>
@@ -301,11 +302,13 @@ const PostCard = ({ post }) => {
                         </div>
 
 
-                        <div ref={divRef} className='mt-2 relative'>
+                        <div ref={divRef} className=' relative'>
                             {
-                                isStOpen && <div className='absolute top-0 right-6 border-[1px] border-gray-500 rounded-lg px-4 py-2 backdrop-blur-[2px] bg-white shadow-lg'>
+                                isStOpen && userInfo.email && <div className='absolute top-0 right-6 border-[1px] border-gray-500 rounded-lg px-4 py-2 backdrop-blur-[2px] bg-white shadow-lg'>
                                 <div className="flex items-center flex-grow mb-3 text-purple-600 whitespace-nowrap"><FaBookmark className="w-7 h-7 p-[7px] mr-1 text-purple-600 bg-purple-100 rounded-md"></FaBookmark> Save Post</div>
-                                <div className="flex items-center flex-grow text-red-600 whitespace-nowrap"><RiDeleteBin6Line className="w-7 h-7 p-[6px] mr-1 text-red-600 bg-red-100 rounded-md"></RiDeleteBin6Line> Delete Post</div>
+                                {
+                                    userEmail === userInfo.email && <div className="flex items-center flex-grow text-red-600 whitespace-nowrap"><RiDeleteBin6Line className="w-7 h-7 p-[6px] mr-1 text-red-600 bg-red-100 rounded-md"></RiDeleteBin6Line> Delete Post</div>
+                                }
                               </div>
                               
                             }

@@ -21,6 +21,8 @@ export default function NavBar() {
         navigate("/login")
     }
 
+    // console.log(userInfo?.userPhoto);
+
 
     return (
         <nav className=" w-full bg-secondary  fixed top-0 z-10 shadow  ">
@@ -43,7 +45,7 @@ export default function NavBar() {
                         user?.uid ?
                             <div className="flex items-center">
                                 {
-                                    userInfo?.userPhoto && <img onClick={() => navigate("/profilepage") } src={userInfo?.userPhoto} className='w-8 rounded-full md:mx-3' alt=''></img>
+                                    userInfo?.userPhoto && <img onClick={() => navigate("/profilepage") } src={userInfo?.userPhoto} className='w-8 h-8 object-cover rounded-full md:mx-3' alt=''></img>
                                 }
                                 
                                 <span className='mx-1 hidden lg:block text-white font-semibold text-xs md:text-lg'>{user?.displayName || userInfo?.name}</span>

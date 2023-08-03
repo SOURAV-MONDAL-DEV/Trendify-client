@@ -36,7 +36,7 @@ const ProfilePage = () => {
         />
         <div className=" w-auto  rounded-xl bg-white shadow-xl mx-5 translate-y-[-50px] ">
           <img
-            className=" w-24 h-24 rounded-md bg-cyan-300 border-2 border-white mx-auto translate-y-[-50%] "
+            className=" w-24 h-24 object-cover rounded-md bg-cyan-300 border-2 border-white mx-auto translate-y-[-50%] "
             src={userInfo?.userPhoto}
           />
 
