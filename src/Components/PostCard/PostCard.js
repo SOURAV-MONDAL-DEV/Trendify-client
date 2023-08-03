@@ -394,7 +394,7 @@ const PostCard = ({ post }) => {
                                 {
                                     comment?.userPhoto ?
                                         <>
-                                            <img src={comment?.userPhoto} className='w-6 rounded-full md:mx-3' alt=''></img>
+                                            <img src={comment?.userPhoto} className='w-6 h-6 object-cover rounded-full md:mx-3' alt=''></img>
                                         </>
                                         :
                                         <>
