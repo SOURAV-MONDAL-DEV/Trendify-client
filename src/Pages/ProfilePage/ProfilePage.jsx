@@ -41,7 +41,8 @@ const ProfilePage = () => {
           />
 
           <div className=" -mt-20 pb-10">
-            <div className="flex justify-end mx-6 my-3">
+            <div className="flex justify-end items-center mx-6 my-3">
+              <p className="mr-1 text-sm">Edit Profile</p>
               <Link className="w-fit mr-0" to="/editUser">
                 <FaRegEdit className="text-secondary text-2xl"></FaRegEdit>
               </Link>
