@@ -11,6 +11,7 @@ import Message from "../Pages/Message/Message";
 import MoreOption from "../Pages/MoreOption/MoreOption";
 import SignUp from "../Pages/SignUp/SignUp";
 import ProfilePage from "../Pages/ProfilePage/ProfilePage";
+import NotFound from "../Pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +66,13 @@ const router = createBrowserRouter([
       },
 
     ]
-  }
+  },
+  {
+    path: '*',
+    element: <NotFound></NotFound>,
+
+  },
+
 ]);
 
 export default router;

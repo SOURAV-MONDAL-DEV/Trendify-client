@@ -55,7 +55,7 @@ const Menu = () => {
                     <FaEdit className='text-3xl text-secondary' />
                     <p className=' font-semibold  md:text-lg'>Write a post</p>
                 </div> */}
-                <Link className="flex items-center gap-3 py-[6px] px-3   w-48 rounded-md mt-2 border-[1px] border-cyan-500 ">
+                <Link to="/" className="flex items-center gap-3 py-[6px] px-3   w-48 rounded-md mt-2 border-[1px] border-cyan-500 ">
                     <div className=" p-2 rounded-lg bg-blue-100">
                         <BiNews className=" text-2xl text-[#0362fc]"></BiNews>
                     </div>
