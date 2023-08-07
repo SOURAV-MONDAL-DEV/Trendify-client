@@ -49,17 +49,23 @@ const MoreOption = () => {
 
 
             <div className='mx-4'>
-                <div className="flex items-center gap-3 mt-4">
-                    <IoMdSettings className='text-3xl text-secondary' />
+                <Link to="/settings" className="flex items-center gap-3 mt-4">
+                    <div className=" p-2 rounded-lg bg-blue-100">
+                        <IoMdSettings className=" text-2xl text-[#00b3ff]"></IoMdSettings>
+                    </div>
+                    {/* <IoMdSettings className='text-3xl text-secondary' /> */}
                     <p className=' font-semibold md:text-lg'>Settings</p>
                     <AiOutlineRight></AiOutlineRight>
-                </div>
+                </Link>
 
-                <div className="flex items-center gap-3 mt-4">
-                    <TbListDetails className='text-3xl text-secondary' />
+                <Link to="/menu" className="flex items-center gap-3 mt-4">
+                    <div className=" p-2 rounded-lg bg-blue-100">
+                        <TbListDetails className=" text-2xl text-[#00aaff]"></TbListDetails>
+                    </div>
+                    {/* <TbListDetails className='text-3xl text-secondary' /> */}
                     <p className=' font-semibold md:text-lg'>More Options</p>
                     <AiOutlineRight></AiOutlineRight>
-                </div>
+                </Link>
             </div>
 
         </div>

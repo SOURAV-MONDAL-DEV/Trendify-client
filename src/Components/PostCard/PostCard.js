@@ -305,12 +305,12 @@ const PostCard = ({ post }) => {
                         <div ref={divRef} className=' relative'>
                             {
                                 isStOpen && userInfo.email && <div className='absolute top-0 right-6 border-[1px] border-gray-500 rounded-lg px-4 py-2 backdrop-blur-[2px] bg-white shadow-lg'>
-                                <div className="flex items-center flex-grow mb-3 text-purple-600 whitespace-nowrap"><FaBookmark className="w-7 h-7 p-[7px] mr-1 text-purple-600 bg-purple-100 rounded-md"></FaBookmark> Save Post</div>
-                                {
-                                    userEmail === userInfo.email && <div className="flex items-center flex-grow text-red-600 whitespace-nowrap"><RiDeleteBin6Line className="w-7 h-7 p-[6px] mr-1 text-red-600 bg-red-100 rounded-md"></RiDeleteBin6Line> Delete Post</div>
-                                }
-                              </div>
-                              
+                                    <div className="flex items-center flex-grow  text-purple-600 whitespace-nowrap"><FaBookmark className="w-7 h-7 p-[7px] mr-1 text-purple-600 bg-purple-100 rounded-md"></FaBookmark> Save Post</div>
+                                    {
+                                        userEmail === userInfo.email && <div className="flex items-center flex-grow mt-3 text-red-600 whitespace-nowrap"><RiDeleteBin6Line className="w-7 h-7 p-[6px] mr-1 text-red-600 bg-red-100 rounded-md"></RiDeleteBin6Line> Delete Post</div>
+                                    }
+                                </div>
+
                             }
                             <GrMoreVertical onClick={() => setIsStOpen(!isStOpen)} className='w-8 h-8 p-[6px] bg-gray-100 rounded-md'></GrMoreVertical>
                         </div>
