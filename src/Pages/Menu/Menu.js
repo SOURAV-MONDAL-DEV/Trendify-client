@@ -64,17 +64,10 @@ const Menu = () => {
                 </Link>
                 <Link className="flex items-center gap-3 py-[6px] px-3   w-48 rounded-md mt-2 border-[1px] border-cyan-500 ">
                     <div className=" p-2 rounded-lg bg-cyan-100">
-                        <FaFacebookMessenger className=" text-2xl text-[#03fce3]"></FaFacebookMessenger>
+                        <FaFacebookMessenger className=" text-2xl text-[#3bd5ea]"></FaFacebookMessenger>
                     </div>
                     {/* <FaFacebookMessenger className='text-3xl text-secondary' /> */}
                     <p className=' text-gray-700 font-[500]  md:text-lg'>Chats</p>
-                </Link>
-                <Link className="flex items-center gap-3 py-[6px] px-3   w-48 rounded-md mt-2 border-[1px] border-cyan-500 ">
-                    <div className=" p-2 rounded-lg bg-yellow-100">
-                        <BsPeopleFill className=" text-2xl text-[#e3a936]"></BsPeopleFill>
-                    </div>
-                    {/* <BsPeopleFill className='text-3xl text-secondary' /> */}
-                    <p className=' text-gray-700 font-[500]  md:text-lg'>Friends</p>
                 </Link>
                 <Link className="flex items-center gap-3 py-[6px] px-3   w-48 rounded-md mt-2 border-[1px] border-cyan-500 ">
                     <div className=" p-2 rounded-lg bg-red-100">
@@ -82,6 +75,13 @@ const Menu = () => {
                     </div>
                     {/* <MdVideoLibrary className='text-3xl text-secondary' /> */}
                     <p className=' text-gray-700 font-[500]  md:text-lg'>Videos</p>
+                </Link>
+                <Link className="flex items-center gap-3 py-[6px] px-3   w-48 rounded-md mt-2 border-[1px] border-cyan-500 ">
+                    <div className=" p-2 rounded-lg bg-yellow-100">
+                        <BsPeopleFill className=" text-2xl text-[#e3a936]"></BsPeopleFill>
+                    </div>
+                    {/* <BsPeopleFill className='text-3xl text-secondary' /> */}
+                    <p className=' text-gray-700 font-[500]  md:text-lg'>Friends</p>
                 </Link>
                 <Link className="flex items-center gap-3 py-[6px] px-3   w-48 rounded-md mt-2 border-[1px] border-cyan-500 ">
                     <div className=" p-2 rounded-lg bg-purple-100">
