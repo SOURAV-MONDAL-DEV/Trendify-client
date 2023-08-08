@@ -1,0 +1,72 @@
+
+/* CSS provided by Ripon vai for Swiper js */
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+    height: 150px;
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  /* Swiper js css end*/
+  
+  /* css for story card  */
+  .storyCard {
+    width: auto;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+    .storyPhoto{
+  
+      width: 100% ;
+      height: 180px ;
+      object-fit: cover ;
+      overflow: hidden ;
+      margin: 0 auto ;
+      border-radius: 5px ;
+    }
+  
+  .userPhoto {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border: 2px solid white;
+    border-radius: 6px;
+  }
+  
+  
+  .personName {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+  
+  
+  
+  
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: white;
+    padding: 0px 22px;
+    border-radius: 100%;
+    transform: scale(.7);
+  }
+  
+  .swiper-button-next:after,.swiper-button-prev:after {
+    transform: scale(.5);
+    color: black;
+    font-weight: bolder;
+  }

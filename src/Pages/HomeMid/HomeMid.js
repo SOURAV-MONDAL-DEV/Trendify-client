@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import PostCard from '../../Components/PostCard/PostCard';
+import StorySlider from '../../Components/StorySlider/StorySlider';
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 
@@ -137,6 +138,9 @@ const HomeMid = () => {
 
     return (
         <div >
+
+            <StorySlider></StorySlider>
+            
 
             {
                 user?.uid ?
