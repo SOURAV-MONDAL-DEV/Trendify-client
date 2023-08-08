@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { storyData } from "./HomeStory";
-// import "./Story.css";
+import "./Story.css";
 
 const Slider = () => {
   return (
