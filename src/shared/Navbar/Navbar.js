@@ -37,7 +37,7 @@ export default function NavBar() {
                     <NavLink to="/"><FaHome className="text-2xl mx-3"> </FaHome></NavLink>
                     <NavLink to="/media"><MdPermMedia className="text-2xl mx-3"></MdPermMedia></NavLink>
                     <NavLink to="/message"><MdMessage className="text-2xl mx-3"></MdMessage></NavLink>
-                    <NavLink to="/menu"><TbListDetails className="text-2xl mx-3 lg:hidden"></TbListDetails></NavLink>
+                    <NavLink to="/menu"><TbListDetails className="text-2xl mx-3 md:hidden"></TbListDetails></NavLink>
                     
                 </div>
                 <div className="">

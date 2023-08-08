@@ -58,7 +58,7 @@ const MoreOption = () => {
                     <AiOutlineRight></AiOutlineRight>
                 </Link>
 
-                <Link to="/menu" className="flex items-center gap-3 mt-4">
+                <Link to="/menu" className="flex md:hidden items-center gap-3 mt-4">
                     <div className=" p-2 rounded-lg bg-blue-100">
                         <TbListDetails className=" text-2xl text-[#00aaff]"></TbListDetails>
                     </div>

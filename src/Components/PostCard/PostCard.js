@@ -281,7 +281,7 @@ const PostCard = ({ post }) => {
 
     return (
         <div className=''>
-            <div className="card w-screen lg:w-full bg-base-100 shadow-xl m-2 mx-auto">
+            <div className="card w-full bg-base-100 shadow-xl m-2 mx-auto">
                 <div className="card-body pb-2">
                     <div className='flex justify-between'>
                         <div className='flex items-center'>

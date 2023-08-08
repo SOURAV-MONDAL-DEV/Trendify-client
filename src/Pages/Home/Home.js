@@ -5,14 +5,14 @@ import MoreOption from '../MoreOption/MoreOption';
 
 const Home = () => {
     return (
-        <div className='lg:flex bg-gray-100 pt-16'>
-            <div className='hidden lg:block basis-3/12 '>
+        <div className='md:flex bg-gray-100 pt-16'>
+            <div className='hidden md:block md:basis-4/12 lg:basis-3/12 '>
                 <Menu></Menu>
             </div>
-            <div style={{maxHeight:"90vh"}} className='lg:overflow-y-scroll basis-6/12'>
+            <div style={{maxHeight:"99vh"}} className='md:overflow-y-scroll md:basis-8/12 lg:basis-6/12'>
                 <Outlet></Outlet>
             </div>
-            <div className='hidden lg:block basis-3/12 '>
+            <div className='hidden lg:block lg:basis-3/12 '>
                 <MoreOption></MoreOption>
             </div>
         </div>
