@@ -8,7 +8,7 @@ import "./Story.css";
 
 const Slider = () => {
   return (
-    <div className="max-w-full mx-auto mt-0 mb-2 lg:my-4">
+    <div className="max-w-full mx-auto mt-0 mb-2 md:my-4">
       <Swiper
         modules={[Navigation, Pagination]}
         navigation
