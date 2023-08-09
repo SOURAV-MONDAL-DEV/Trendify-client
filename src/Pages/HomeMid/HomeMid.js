@@ -149,14 +149,14 @@ const HomeMid = () => {
                             <label className="label">
                                 <span className="label-text">Whats on your mind?</span>
                             </label>
-                            <textarea name="text" className="textarea textarea-bordered h-24 w-full" placeholder="Write here" required></textarea>
+                            <textarea name="text" className="textarea textarea-bordered h-16 w-full" placeholder="Write here" required></textarea>
                         </div>
                         <div className='flex justify-around'>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Add photo</span>
                                 </label>
-                                <input name="image" type="file" placeholder="Add photo" ></input>
+                                <input className='' style={{maxWidth: 'calc(100vw - 100px)'}} name="image" type="file" placeholder="Add photo" ></input>
                             </div>
                             <div className="form-control mt-6">
                                 <input className='btn btn-secondary btn-sm' type='submit' value="POST" />
