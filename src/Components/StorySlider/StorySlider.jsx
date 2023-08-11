@@ -5,8 +5,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { storyData } from "./HomeStory";
 import "./Story.css";
+import CreateStory from "../../img/CreateStory.png"
 
 const Slider = () => {
+
+
   return (
     <div className="max-w-full mx-auto mt-0 mb-2 md:my-4">
       <Swiper
@@ -37,6 +40,34 @@ const Slider = () => {
           },
         }}
       >
+
+        
+<SwiperSlide key={-1}>
+          <div>
+            {/* <img
+                className="storyPhoto w-full h-[180px] object-cover"
+                src={story.imgUrl}
+                alt=""
+              ></img> */}
+            <div className=" relative">
+              <img
+                className="storyPhoto w-full h-[180px] object-cover"
+                src={CreateStory}
+                alt=""
+              ></img>
+              <img
+                className=" w-8 h-8 absolute bottom-[-15px] left-1/2 transform translate-x-[-50%] object-cover border-2 border-white rounded-6"
+                src={storyData[3]?.imgUrl}
+                alt=""
+              ></img>
+            </div>
+            <div className="personName mt-4 mx-auto text-center text-sm">
+              Amir Khan
+            </div>
+          </div>
+        </SwiperSlide>
+
+
         {storyData.map((story, idx) => (
           <SwiperSlide key={idx}>
             <div>
