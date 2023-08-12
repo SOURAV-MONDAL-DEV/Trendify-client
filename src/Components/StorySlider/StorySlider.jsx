@@ -5,10 +5,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { storyData } from "./HomeStory";
 import "./Story.css";
-import CreateStory from "../../img/CreateStory.png"
+import CreateStory from "../../img/CreateStory.png";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
 const Slider = () => {
-
+  const { user, logOut, userInfo } = useContext(AuthContext);
+  // const navigate = useNavigate();
+  const { _id, email, name, userPhoto, work, address, college } = userInfo;
 
   return (
     <div className="max-w-full mx-auto mt-0 mb-2 md:my-4">
@@ -18,17 +22,21 @@ const Slider = () => {
         spaceBetween={5}
         slidesPerView={3.5}
         breakpoints={{
-          600: {
-            slidesPerView: 4,
+          500: {
+            slidesPerView: 4.5,
             spaceBetween: 10,
           },
-          768: {
+          600: {
+            slidesPerView: 5,
+            spaceBetween: 10,
+          },
+          900: {
             slidesPerView: 6,
             spaceBetween: 10,
           },
           1024: {
             slidesPerView: 5,
-            spaceBetween: 15,
+            spaceBetween: 10,
           },
           1500: {
             slidesPerView: 6,
@@ -40,15 +48,8 @@ const Slider = () => {
           },
         }}
       >
-
-        
-<SwiperSlide key={-1}>
+        <SwiperSlide key={-1}>
           <div>
-            {/* <img
-                className="storyPhoto w-full h-[180px] object-cover"
-                src={story.imgUrl}
-                alt=""
-              ></img> */}
             <div className=" relative">
               <img
                 className="storyPhoto w-full h-[180px] object-cover"
@@ -56,17 +57,16 @@ const Slider = () => {
                 alt=""
               ></img>
               <img
-                className=" w-8 h-8 absolute bottom-[-15px] left-1/2 transform translate-x-[-50%] object-cover border-2 border-white rounded-6"
-                src={storyData[3]?.imgUrl}
+                className=" w-10 h-10 absolute bottom-[-20px] left-1/2 transform translate-x-[-50%] object-cover border-2 border-white rounded-full"
+                src={userPhoto}
                 alt=""
               ></img>
             </div>
             <div className="personName mt-4 mx-auto text-center text-sm">
-              Amir Khan
+              You
             </div>
           </div>
         </SwiperSlide>
-
 
         {storyData.map((story, idx) => (
           <SwiperSlide key={idx}>
@@ -88,7 +88,9 @@ const Slider = () => {
                   alt=""
                 ></img>
               </div>
-              <div className="personName mt-4 mx-auto text-center text-sm">{story.personName}</div>
+              <div className="personName mt-4 mx-auto text-center text-sm">
+                {story.personName}
+              </div>
             </div>
           </SwiperSlide>
         ))}
