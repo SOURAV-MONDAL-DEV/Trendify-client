@@ -5,10 +5,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { storyData } from "./HomeStory";
 import "./Story.css";
-import CreateStory from "../../img/CreateStory.png";
+import CreateStoryImg from "../../img/CreateStory.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import Modal from "./modal";
+import CreateStory from "../CreateStory/CreateStory";
 
 const Slider = () => {
   const { user, logOut, userInfo } = useContext(AuthContext);
@@ -66,7 +67,7 @@ const Slider = () => {
               <img
                 onClick={openModal}
                 className="storyPhoto w-full h-[180px] object-cover"
-                src={CreateStory}
+                src={CreateStoryImg}
                 alt=""
               ></img>
               <img
@@ -108,9 +109,12 @@ const Slider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
+      <Modal isOpen={isModalOpen} onClose={closeModal}> 
         {/* Your modal content */}
-        <p className="text-gray-800">This is the modal content.</p>
+        <p className="text-gray-800 text-xl font-bold ">Create story</p>
+        <div>
+          <CreateStory/>
+        </div>
       </Modal>
     </div>
   );
