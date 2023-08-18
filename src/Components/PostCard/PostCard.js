@@ -324,11 +324,11 @@ const PostCard = ({ post }) => {
                     postPhoto && <figure><img src={postPhoto} alt="Shoes" /></figure>
                 }
 
-                <div className="card-body  py-2">
+                <div className="items-center card-body py-2 px-1">
 
                     {
                         userInfo ?
-                            <div className='grid grid-cols-3 text-center'>
+                            <div className='w-full grid grid-cols-3 text-center'>
                                 <div className='inline justify-center items-center'>
                                     {
                                         isLiked ?
@@ -373,7 +373,7 @@ const PostCard = ({ post }) => {
                     {
                         userInfo ?
 
-                            <form onSubmit={handlePostComments} className='flex items-center'>
+                            <form onSubmit={handlePostComments}   className='flex items-center justify-center w-[72%]'>
                                 <input name="comment" type="text" className='border border-secondary rounded mr-2 px-2 w-full' placeholder='write comments' required ></input>
                                 <button type='submit' className='btn btn-secondary btn-xs'>comment</button>
                             </form>
