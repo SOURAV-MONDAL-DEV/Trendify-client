@@ -61,15 +61,16 @@ const Slider = () => {
         }}
       > 
         <SwiperSlide key={-1}>
-          <div onClick={openModal}>
-            <div className=" relative">
+          <div>
+            <div  className=" relative">
               <img
+                onClick={openModal}
                 className="storyPhoto w-full h-[180px] object-cover"
                 src={CreateStory}
                 alt=""
               ></img>
               <img
-                className=" w-10 h-10 absolute bottom-[-20px] left-1/2 transform translate-x-[-50%] object-cover border-2 border-white rounded-full"
+                className=" w-11 h-11 absolute bottom-[-20px] left-1/2 transform translate-x-[-50%] object-cover border-4 border-gray-100 rounded-full"
                 src={userPhoto}
                 alt=""
               ></img>
